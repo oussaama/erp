@@ -1,0 +1,13 @@
+{{ form_start(form,{'action': path('admin_Filiere_add'),'method':'POST','attr':{'id':'addFiliere','novalidate':'novalidate'}}) }}
+    {{ form_row(form.filiere) }}
+    <span id="filiere"></span>
+    {{ form_row(form.diplome) }}
+    <span id="diplome"></span>
+    <div class="divider15"></div>
+<div>
+    <input type="submit" value="Update" class="btn btn-primary site-btn pull-right" id="addFiliereButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/global/js/global/form/formEmployee.js') }}"></script>

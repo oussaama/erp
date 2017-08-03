@@ -1,0 +1,1084 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="etudiant")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\EtudiantRepository")
+ * @UniqueEntity(fields = "username", targetClass = "ERPBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "ERPBundle\Entity\User", message="fos_user.email.already_used")
+ */
+class Etudiant extends User
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etablissement", inversedBy="etudiant")
+     * @ORM\JoinColumn(name="etablissment", referencedColumnName="id")
+     */
+    private $Etablissement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Specialite", inversedBy="etudiant")
+     * @ORM\JoinColumn(name="specialite", referencedColumnName="id")
+     */
+    private $specialite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Parents", inversedBy="etudiants",cascade={"persist"})
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id")
+     */
+    private $parent;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long."
+     * )
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="naissance", type="date")
+     */
+    private $naissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveauEtude", type="string")
+     */
+    private $niveauEtude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieux", type="string", length=255)
+     */
+    private $lieux;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="sex", type="boolean")
+     */
+    private $sex;
+
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long."
+     * )
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cin", type="string", length=255,unique=true,nullable=true)
+     */
+    private $cin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="passport", type="string", length=255,unique=true,nullable=true)
+     */
+    private $passport;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cp", type="integer")
+     */
+    private $cp;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Slice", mappedBy="etudiant", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    protected $slice;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Pays", inversedBy="etudiant",cascade={"persist"})
+     * @ORM\JoinColumn(name="pays", referencedColumnName="id")
+     */
+    private $pays;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Diplome", inversedBy="etudiant",cascade={"persist"})
+     * @ORM\JoinColumn(name="diplome", referencedColumnName="id")
+     */
+    private $diplome;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="tel", type="integer" ,length=255)
+     */
+    private $tel;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="paiment", type="boolean")
+     */
+    private $paiment;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tranche", type="boolean")
+     */
+    private $tranche;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="crypte", type="string", length=1000,nullable=true)
+     */
+    private $crypte;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="etudiant")
+     * @ORM\JoinColumn(name="classe", referencedColumnName="id")
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Niveau", inversedBy="etudiant")
+     * @ORM\JoinColumn(name="niveau", referencedColumnName="id")
+     */
+    private $niveau;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Filiere", inversedBy="etudiant")
+     * @ORM\JoinColumn(name="filiere", referencedColumnName="id")
+     */
+    private $filiere;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Appsense", mappedBy="etudiant")
+     */
+    private $appsense;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Note", mappedBy="etudiant")
+     */
+    private $note;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="etudiant")
+     */
+    private $payment;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Document", cascade={"persist"})
+     */
+    private $document;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cie", type="string",nullable=true)
+     */
+    private $cie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string")
+     */
+    private $etat;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole("ROLE_ETUDIANT");
+        $this->enabled = 1;
+        $this->etat = "pre-inscrit";
+    }
+
+    /**
+     * Set idEtablissement
+     *
+     * @param \ERPBundle\Entity\Etablissement $Etablissement
+     *
+     * @return Admin
+     */
+    public function setEtablissement(\ERPBundle\Entity\Etablissement $Etablissement = null)
+    {
+        $this->Etablissement = $Etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get idEtablissement
+     *
+     * @return \ERPBundle\Entity\Etablissement
+     */
+    public function getEtablissement()
+    {
+        return $this->Etablissement;
+    }
+
+    /**
+     * Set cin
+     *
+     * @param string $cin
+     *
+     * @return Employee
+     */
+    public function setCin($cin)
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Get cin
+     *
+     * @return string
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Employee
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Employee
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param integer $cp
+     *
+     * @return Employee
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return integer
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+
+    /**
+     * Set tel
+     *
+     * @param integer $tel
+     *
+     * @return Employee
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return integer
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+
+    /**
+     * Add etablissementE
+     *
+     * @param \ERPBundle\Entity\Etablissement $etablissementE
+     *
+     * @return Employee
+     */
+    public function addEtablissementE(\ERPBundle\Entity\Etablissement $etablissementE)
+    {
+        $this->EtablissementE[] = $etablissementE;
+
+        return $this;
+    }
+
+    /**
+     * Remove etablissementE
+     *
+     * @param \ERPBundle\Entity\Etablissement $etablissementE
+     */
+    public function removeEtablissementE(\ERPBundle\Entity\Etablissement $etablissementE)
+    {
+        $this->EtablissementE->removeElement($etablissementE);
+    }
+
+    /**
+     * Get etablissementE
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtablissementE()
+    {
+        return $this->EtablissementE;
+    }
+
+    /**
+     * Set etablissementE
+     *
+     * @param \ERPBundle\Entity\Employee $etablissementE
+     *
+     * @return Employee
+     */
+    public function setEtablissementE(\ERPBundle\Entity\Employee $etablissementE = null)
+    {
+        $this->EtablissementE = $etablissementE;
+
+        return $this;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return Etudiant
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set cie
+     *
+     * @param string $cie
+     *
+     * @return Etudiant
+     */
+    public function setCie($cie)
+    {
+        $this->cie = $cie;
+
+        return $this;
+    }
+
+    /**
+     * Get cie
+     *
+     * @return string
+     */
+    public function getCie()
+    {
+        return $this->cie;
+    }
+
+
+    /**
+     * Set parent
+     *
+     * @param \ERPBundle\Entity\Parents $parent
+     *
+     * @return Etudiant
+     */
+    public function setParent(\ERPBundle\Entity\Parents $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \ERPBundle\Entity\Parents
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set specialite
+     *
+     * @param string $specialite
+     *
+     * @return Etudiant
+     */
+    public function setSpecialite($specialite)
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * Get specialite
+     *
+     * @return string
+     */
+    public function getSpecialite()
+    {
+        return $this->specialite;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Etudiant
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \ERPBundle\Entity\Niveau $niveau
+     *
+     * @return Etudiant
+     */
+    public function setNiveau(\ERPBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \ERPBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \ERPBundle\Entity\Filiere $filiere
+     *
+     * @return Etudiant
+     */
+    public function setFiliere(\ERPBundle\Entity\Filiere $filiere = null)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \ERPBundle\Entity\Filiere
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
+    }
+
+    /**
+     * Add document
+     *
+     * @param \ERPBundle\Entity\Document $document
+     *
+     * @return Etudiant
+     */
+    public function addDocument(\ERPBundle\Entity\Document $document)
+    {
+        $this->document[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \ERPBundle\Entity\Document $document
+     */
+    public function removeDocument(\ERPBundle\Entity\Document $document)
+    {
+        $this->document->removeElement($document);
+    }
+
+    /**
+     * Get document
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    /**
+     * Set document
+     *
+     * @param \ERPBundle\Entity\Document $document
+     *
+     * @return Etudiant
+     */
+    public function setDocument(\ERPBundle\Entity\Document $document = null)
+    {
+        $this->document = $document;
+
+        return $this;
+    }
+
+    /**
+     * Set crypte
+     *
+     * @param string $crypte
+     *
+     * @return Etudiant
+     */
+    public function setCrypte($crypte)
+    {
+        $this->crypte = $crypte;
+
+        return $this;
+    }
+
+    /**
+     * Get crypte
+     *
+     * @return string
+     */
+    public function getCrypte()
+    {
+        return $this->crypte;
+    }
+
+    /**
+     * Set payment
+     *
+     * @param \ERPBundle\Entity\Payment $payment
+     *
+     * @return Etudiant
+     */
+    public function setPayment(\ERPBundle\Entity\Payment $payment = null)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \ERPBundle\Entity\Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Add payment
+     *
+     * @param \ERPBundle\Entity\Payment $payment
+     *
+     * @return Etudiant
+     */
+    public function addPayment(\ERPBundle\Entity\Payment $payment)
+    {
+        $this->payment[] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \ERPBundle\Entity\Payment $payment
+     */
+    public function removePayment(\ERPBundle\Entity\Payment $payment)
+    {
+        $this->payment->removeElement($payment);
+    }
+
+    /**
+     * Set paiment
+     *
+     * @param boolean $paiment
+     *
+     * @return Etudiant
+     */
+    public function setPaiment($paiment)
+    {
+        $this->paiment = $paiment;
+
+        return $this;
+    }
+
+    /**
+     * Get paiment
+     *
+     * @return boolean
+     */
+    public function getPaiment()
+    {
+        return $this->paiment;
+    }
+
+    /**
+     * Add note
+     *
+     * @param \ERPBundle\Entity\Note $note
+     *
+     * @return Etudiant
+     */
+    public function addNote(\ERPBundle\Entity\Note $note)
+    {
+        $this->note[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \ERPBundle\Entity\Note $note
+     */
+    public function removeNote(\ERPBundle\Entity\Note $note)
+    {
+        $this->note->removeElement($note);
+    }
+
+    /**
+     * Get note
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set passport
+     *
+     * @param string $passport
+     *
+     * @return Etudiant
+     */
+    public function setPassport($passport)
+    {
+        $this->passport = $passport;
+
+        return $this;
+    }
+
+    /**
+     * Get passport
+     *
+     * @return string
+     */
+    public function getPassport()
+    {
+        return $this->passport;
+    }
+
+    /**
+     * Set pays
+     *
+     * @param \ERPBundle\Entity\Pays $pays
+     *
+     * @return Etudiant
+     */
+    public function setPays(\ERPBundle\Entity\Pays $pays = null)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return \ERPBundle\Entity\Pays
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Etudiant
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set naissance
+     *
+     * @param \DateTime $naissance
+     *
+     * @return Etudiant
+     */
+    public function setNaissance($naissance)
+    {
+        $this->naissance = $naissance;
+
+        return $this;
+    }
+
+    /**
+     * Get naissance
+     *
+     * @return \DateTime
+     */
+    public function getNaissance()
+    {
+        return $this->naissance;
+    }
+
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Etudiant
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieux = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieux;
+    }
+
+    /**
+     * Set sex
+     *
+     * @param boolean $sex
+     *
+     * @return Etudiant
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Get sex
+     *
+     * @return boolean
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Etudiant
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set niveauEtude
+     *
+     * @param string $niveauEtude
+     *
+     * @return Etudiant
+     */
+    public function setNiveauEtude($niveauEtude)
+    {
+        $this->niveauEtude = $niveauEtude;
+
+        return $this;
+    }
+
+    /**
+     * Get niveauEtude
+     *
+     * @return string
+     */
+    public function getNiveauEtude()
+    {
+        return $this->niveauEtude;
+    }
+
+    /**
+     * Set diplome
+     *
+     * @param \ERPBundle\Entity\Diplome $diplome
+     *
+     * @return Etudiant
+     */
+    public function setDiplome(\ERPBundle\Entity\Diplome $diplome = null)
+    {
+        $this->diplome = $diplome;
+
+        return $this;
+    }
+
+    /**
+     * Get diplome
+     *
+     * @return \ERPBundle\Entity\Diplome
+     */
+    public function getDiplome()
+    {
+        return $this->diplome;
+    }
+
+    /**
+     * Set lieux
+     *
+     * @param string $lieux
+     *
+     * @return Etudiant
+     */
+    public function setLieux($lieux)
+    {
+        $this->lieux = $lieux;
+
+        return $this;
+    }
+
+    /**
+     * Get lieux
+     *
+     * @return string
+     */
+    public function getLieux()
+    {
+        return $this->lieux;
+    }
+
+    /**
+     * Add slouse
+     *
+     * @param \ERPBundle\Entity\Slice $slouse
+     *
+     * @return Etudiant
+     */
+    public function addSlouse(\ERPBundle\Entity\Slice $slouse)
+    {
+        $this->slice[] = $slouse;
+
+        return $this;
+    }
+
+    /**
+     * Remove slouse
+     *
+     * @param \ERPBundle\Entity\Slice $slouse
+     */
+    public function removeSlouse(\ERPBundle\Entity\Slice $slouse)
+    {
+        $this->slice->removeElement($slouse);
+    }
+
+    /**
+     * Get slice
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSlice()
+    {
+        return $this->slice;
+    }
+
+
+    
+
+    /**
+     * Set tranche
+     *
+     * @param boolean $tranche
+     *
+     * @return Etudiant
+     */
+    public function setTranche($tranche)
+    {
+        $this->tranche = $tranche;
+
+        return $this;
+    }
+
+    /**
+     * Get tranche
+     *
+     * @return boolean
+     */
+    public function getTranche()
+    {
+        return $this->tranche;
+    }
+}

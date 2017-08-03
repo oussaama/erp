@@ -1,0 +1,26 @@
+<div class="sidebar-menu">
+    <ul class="nav site-menu" id="site-menu">
+        <li class="sub-item" id="indexx">
+            <a href="{{ path('etudiant_homepage') }}" class="flat-buttons"><i class="icon_desktop"></i><span>Dashboard</span>
+            </a>
+        </li>
+        <li class="sub-item" id="scolarite">
+            <a href="{{ path('etudiant_programme') }}" class="flat-buttons">
+                <i class="icon_puzzle"></i>
+                <span>Scolarité</span>
+            </a>
+        </li>
+        <li class="sub-item" id="profile">
+            <a href="{{ path('etudiant_profile') }}" class="flat-buttons">
+                <i class="icon_group"></i>
+                <span>Profil</span>
+            </a>
+        </li>
+        <li class="sub-item" id="communication">
+            <a href="{{ path('etudiant_mailBox',{'type':'recu'}) }}" class="flat-buttons">
+                <i class="icon_mail_alt"></i>
+                <span>Communication</span>
+            </a>
+        </li>
+    </ul>
+</div>

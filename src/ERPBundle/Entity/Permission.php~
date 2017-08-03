@@ -1,0 +1,194 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Permission
+ *
+ * @ORM\Table(name="permission")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\PermissionRepository")
+ */
+class Permission
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="EDT", type="boolean")
+     */
+    private $eDT;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="class", type="boolean")
+     */
+    private $class;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="ue", type="boolean")
+     */
+    private $ue;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="grh", type="boolean")
+     */
+    private $grh;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="paiment", type="boolean")
+     */
+    private $paiment;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ERPBundle\Entity\Admin", cascade={"persist"})
+     */
+    private $Admin;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set eDT
+     *
+     * @param boolean $eDT
+     *
+     * @return Permission
+     */
+    public function setEDT($eDT)
+    {
+        $this->eDT = $eDT;
+
+        return $this;
+    }
+
+    /**
+     * Get eDT
+     *
+     * @return bool
+     */
+    public function getEDT()
+    {
+        return $this->eDT;
+    }
+
+    /**
+     * Set class
+     *
+     * @param boolean $class
+     *
+     * @return Permission
+     */
+    public function setClass($class)
+    {
+        $this->class = $class;
+
+        return $this;
+    }
+
+    /**
+     * Get class
+     *
+     * @return bool
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * Set ue
+     *
+     * @param boolean $ue
+     *
+     * @return Permission
+     */
+    public function setUe($ue)
+    {
+        $this->ue = $ue;
+
+        return $this;
+    }
+
+    /**
+     * Get ue
+     *
+     * @return bool
+     */
+    public function getUe()
+    {
+        return $this->ue;
+    }
+
+    /**
+     * Set grh
+     *
+     * @param boolean $grh
+     *
+     * @return Permission
+     */
+    public function setGrh($grh)
+    {
+        $this->grh = $grh;
+
+        return $this;
+    }
+
+    /**
+     * Get grh
+     *
+     * @return bool
+     */
+    public function getGrh()
+    {
+        return $this->grh;
+    }
+
+    /**
+     * Set paiment
+     *
+     * @param boolean $paiment
+     *
+     * @return Permission
+     */
+    public function setPaiment($paiment)
+    {
+        $this->paiment = $paiment;
+
+        return $this;
+    }
+
+    /**
+     * Get paiment
+     *
+     * @return bool
+     */
+    public function getPaiment()
+    {
+        return $this->paiment;
+    }
+}
+

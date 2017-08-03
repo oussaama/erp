@@ -1,0 +1,9 @@
+enseignant_homepage:
+    path:     /index
+    defaults: { _controller: ERPBundle:Front/Enseignant/Enseignant:index }
+enseignant_profil:
+    path:     /profile
+    defaults: { _controller: ERPBundle:Front/Enseignant/Enseignant:EnseignantProfil }
+enseignant_emploi:
+    path:     /enseignant
+    defaults: { _controller: ERPBundle:Front/Enseignant/Enseignant:emploi }

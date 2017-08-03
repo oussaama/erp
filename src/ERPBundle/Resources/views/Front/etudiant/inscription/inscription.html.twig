@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="bootstrap default admin template">
+    <meta name="viewport" content="width=device-width">
+    <title>Upload document</title>
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window);//]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "82f71ab91e52e9dc6f8d10c6ee544add",
+                    petok: "e53f95b1ea72b53fbf11a3f72ea14fd7bb6b9124-1497803184-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../../../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/Waves/dist/waves.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/color/light/color-default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/weather-icons/css/weather-icons.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/weather-icons/css/weather-icons-wind.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/rickshaw/rickshaw.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
+    <style>
+        .nav-item-etape-done{
+            background: #5cb85c !important;
+        }
+    </style>
+<body>
+<div class="loader-overlay">
+    <div class="loader-preview-area">
+        <div class="spinners">
+            <div class="loader">
+                <div class="rotating-plane"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <section class="form-elements">
+        <div class="site-content-title">
+            <h2 class="float-xs-left content-title-main">Document</h2>
+            <ol class="breadcrumb float-xs-right">
+                <li class="breadcrumb-item">
+                    <span class="fs1" aria-hidden="true" data-icon=""></span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">Document</a></li>
+                <li class="breadcrumb-item active"> Upload</li>
+            </ol>
+        </div>
+
+
+        <div class="content content-wizard">
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4 class="page-content-title">Vertical tabs left</h4>
+                <div class="divider15"></div>
+                <div class="nav-tab-vertical-left">
+                    <ul class="nav nav-tabs float-xs-left" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link flat-buttons active" data-toggle="tab" href="#home4"
+                               role="tab">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link flat-buttons" data-toggle="tab" href="#profile4" role="tab">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link flat-buttons" data-toggle="tab" href="#settings4" role="tab">Settings</a>
+                        </li>
+                    </ul>
+                    <div data-plugin="scrollbar" data-height="150">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home4" role="tabpanel">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                                    dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+                                    ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+                                    quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                    arcu.
+                                </p>
+                            </div>
+                            <div class="tab-pane" id="profile4" role="tabpanel">
+                                <p>
+                                    Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam
+                                    sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla
+                                    mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
+                                    eget bibendum sodales, augue velit cursus nunc. Aliquam
+                                    lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+                                    viverra nulla.
+                                </p>
+                            </div>
+                            <div class="tab-pane" id="settings4" role="tabpanel">
+                                <p>
+                                    In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
+                                    dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+                                    Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
+                                    leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
+                                    lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+                                    viverra nulla.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-xs-12">
+                            <div class="step-content-wizzard">
+                                <div class="step_default">
+                                <ul class="nav nav-inline">
+                                    <li class="nav-item step_lg_spacing nav-item-etape-done">
+                                        <div class="step_badge float-xs-left text-xs-center" style="color: white;border-color:white;">1</div>
+                                        <div class="step_infomation">
+                                            <h6 class="step_title" style="color: white">Pré-Inscription</h6>
+                                            <p class="step_description" style="color: white">Lorem ipsum dolor set.</p>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item step_lg_spacing active">
+                                        <div class="step_badge float-xs-left text-xs-center">2</div>
+                                        <div class="step_infomation">
+                                            <h6 class="step_title">Upload des documents</h6>
+                                            <p class="step_description">Lorem ipsum dolor set.</p>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item step_lg_spacing">
+                                        <div class="step_badge float-xs-left text-xs-center">3</div>
+                                        <div class="step_infomation">
+                                            <h6 class="step_title">Third step</h6>
+                                            <p class="step_description">Lorem ipsum dolor set.</p>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item step_lg_spacing">
+                                        <div class="step_badge float-xs-left text-xs-center">4</div>
+                                        <div class="step_infomation">
+                                            <h6 class="step_title">Fourth step</h6>
+                                            <p class="step_description">Lorem ipsum dolor set.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                                <div class="divider15"></div>
+                                <div class="divider15"></div>
+                                <div>
+                                {% if etat = 1 %}
+                                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                                        <div class="alert alert-success alert-icon-corner fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="alert-media-left">
+                                                <i class="fa fa-smile-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="alert-media-right">
+                                                <h4 class="alert-heading">Success</h4>
+                                                <p>{{ flashMessage }}.</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    {{ form_start(form) }}
+                                        {{ form_widget(form) }}
+                                    {{ form_end(form) }}
+                                {% endif %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot/jquery.flot.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Flot/jquery.flot.resize.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot/jquery.flot.pie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot/jquery.flot.time.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot/jquery.flot.categories.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/arcseldon-jquery.sparkline/dist/jquery.sparkline.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/skycons/skycons.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/progressbar.js/dist/progressbar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/gauge.js/dist/gauge.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/raphael/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-mapael/js/jquery.mapael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-mapael/js/maps/france_departments.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-mapael/js/maps/world_countries.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-mapael/js/maps/usa_states.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/d3/d3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/rickshaw/rickshaw.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/dashboard_v4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-left-icon-menu/js/layout.min.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+</body>
+</html>

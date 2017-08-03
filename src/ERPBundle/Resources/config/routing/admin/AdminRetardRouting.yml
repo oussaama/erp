@@ -1,0 +1,9 @@
+#Retard
+admin_Retard_index:
+    path:     /index
+    defaults: { _controller: ERPBundle:Admin/AdminRetard:index }
+admin_Retard_detail:
+    path:     /detail/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminRetard:retardDetail }
+    options:
+        expose: true

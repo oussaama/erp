@@ -1,0 +1,48 @@
+etudiant_homepage:
+    path:     /index
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:index }
+etudiant_profile:
+    path:     /profile
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:Profil }
+etudiant_mailBox:
+    path:     /mail/{type}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:MailBox }
+etudiant_mailBoxDetail:
+    path:     /mail/{type}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:MailBox }
+etudiant_mailBox_send:
+    path:     /send
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:MailBoxSend }
+etudiant_mailBox_Detail:
+    path:     /mail/detail/{id}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:MailBoxDetail }
+etudiant_agenda:
+    path:     /agenda
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:Agenda }
+etudiant_notification:
+    path:     /notification
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:Notification }
+etudiant_programme:
+    path:     /programme
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:programme }
+etudiant_cours:
+    path:     /cours
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:cours }
+etudiant_examen:
+    path:     /examen
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:examen }
+etudiant_absence:
+    path:     /absence
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:absence }
+etudiant_paiment:
+    path:     /paiment
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:paiment }
+etudiant_emploi:
+    path:     /emploi
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:emploi }
+etudiant_note:
+    path:     /note
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:note }
+etudiant_appsense_detail:
+    path:     /appsense/{matiere}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:appsenseDetail }

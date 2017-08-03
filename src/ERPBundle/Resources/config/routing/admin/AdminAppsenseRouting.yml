@@ -1,0 +1,4 @@
+#Appsense
+admin_Appsense_index:
+    path:     /index
+    defaults: { _controller: ERPBundle:Admin/AdminAppsense:index }

@@ -1,0 +1,11 @@
+{{ form_start(form,{'action': path('admin_status_edit',{'id':id}),'method':'POST','attr':{'id':'new','novalidate':'novalidate'}}) }}
+
+<span id="status_status"></span>
+{{ form_row(form.type) }}
+
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Modifier" class="btn btn-primary site-btn pull-right" id="addEmployeeButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

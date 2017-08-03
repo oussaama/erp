@@ -1,0 +1,23 @@
+cour_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Front/Enseignant/Cour:index }
+    methods:  GET
+
+cour_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Front/Enseignant/Cour:show }
+    methods:  GET
+
+cour_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Front/Enseignant/Cour:new }
+    methods:  [GET, POST]
+
+cour_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Front/Enseignant/Cour:edit }
+    methods:  [GET, POST]
+
+enseignant_delete_cours:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Front/Enseignant/Cour:delete }

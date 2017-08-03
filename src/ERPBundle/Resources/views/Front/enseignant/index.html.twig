@@ -1,0 +1,210 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}ESPACE - ENSEIGNANT{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window);//]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "82f71ab91e52e9dc6f8d10c6ee544add",
+                    petok: "07d9b5c669a4fa4a06776c98721e4d32cea870c5-1497805119-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+
+        };
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/Waves/dist/waves.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet" href="{{ asset('assets/layouts/layout-material-menu/css/color/light/color-default.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/css-hamburgers/dist/hamburgers.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/morris.js/morris.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.theme.default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
+{% endblock %}
+{% block body %}
+    <section id="content-wrapper" class="form-elements">
+        <div class="site-content-title">
+            <h2 class="float-xs-left content-title-main">Accueil | <u> Accès rapide </u> </h2>
+            <ol class="breadcrumb float-xs-right">
+                <li class="breadcrumb-item">
+                    <span class="fs1" aria-hidden="true" data-icon=""></span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+            </ol>
+        </div>
+        <div class="col-md-12">
+            <div class="content content-blockquote">
+                <div class="image-blockquote alert-warning">
+                    <div class="img-blockquote">
+                    </div>
+                    <blockquote>
+                        <p class="text-xs-center">Bienvenu, {{ app.user.username |capitalize }} chez votre espace administratif</p>
+                        <div class="border-blockquote"></div>
+                        <h5 class="text-xs-center">{{ app.user.username |capitalize }} </h5>
+                        <h5 class="text-xs-center">Espace Enseignant</h5>
+                    </blockquote>
+                </div>
+                <div class="contain-inner dashboard_v4-page">
+                    <div class="row">
+                        <div class="dashboard_v4_box_block">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="content">
+                                    <div class="dashboard_v4_box_icon float-xs-left warning_box">
+                                        <i class="fa fa-archive fa-5x"></i>
+                                    </div>
+                                    <div class="dashboard_v4_box_title float-xs-right">
+                                        <h4><a href="{{ path('cour_index') }}">COURS</a></h4>
+                                        <p>Total des cours : <span class="tag tag-pill tag-warning">{{ result }}</span></p>
+                                    </div>
+                                    <br><br><br><br><br><br>
+                                    <div class="progress">
+                                        <progress class="progress progress-striped progress-info" value="60" max="100"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="content">
+                                    <div class="dashboard_v4_box_icon float-xs-left warning_box">
+                                        <i class="fa fa-edit fa-5x"></i>
+                                    </div>
+                                    <div class="dashboard_v4_box_title float-xs-right">
+                                        <h4> <a href="{{ path('note_index') }}">NOTES</a></h4>
+                                        <p>Total des notes : <span class="tag tag-pill tag-warning">{{ result_note }}</span></p>
+                                    </div>
+                                    <br><br><br><br><br><br>
+                                    <div class="progress">
+                                        <progress class="progress progress-striped progress-info" value="60" max="100"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="content">
+                                    <div class="dashboard_v4_box_icon float-xs-left success_box">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="dashboard_v4_box_title float-xs-right">
+                                        <h4> <a href="{{ path('appsense_index') }}">ABSENCES</a></h4>
+                                        <p>Total des absences : <span class="tag tag-pill tag-success">{{ result_absence }}</span></p>
+                                    </div>
+                                    <br><br><br><br><br><br>
+                                    <div class="progress">
+                                        <progress class="progress progress-striped progress-info" value="60" max="100"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="content">
+                                    <div class="dashboard_v4_box_icon float-xs-left success_box">
+                                        <i class="fa fa-university fa-5x"></i>
+                                    </div>
+                                    <div class="dashboard_v4_box_title float-xs-right">
+                                        <h4> <a href="{{ path('examen_index') }}">EXAMENS</a></h4>
+                                        <p>Total des examens principales : <span class="tag tag-pill tag-success">{{ result_examen_principale }}</span></p>
+                                        <p>Total des examens controles : <span class="tag tag-pill tag-warning">{{ result_examen_controle }}</span></p>
+                                    </div>
+                                    <br><br><br><br><br><br>
+                                    <div class="progress">
+                                        <progress class="progress progress-striped progress-info" value="60" max="100"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bars-color" class="chart-height"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/raphael/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/morris.js/morris.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-mousewheel/jquery.mousewheel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/arcseldon-jquery.sparkline/dist/jquery.sparkline.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/dashboard_v2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-icon-menu/js/layout.min.js') }}"></script>
+    <script>
+        $('#dashboard').addClass('active');
+    </script>
+{% endblock %}

@@ -1,0 +1,318 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Cour
+ *
+ * @ORM\Table(name="cour")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\CourRepository")
+ */
+class Cour
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjoute", type="datetime")
+     */
+    private $dateAjoute;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datePublication", type="datetime")
+     */
+    private $datePublication;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="enabled", type="integer", length=11, options={"default" = 0})
+     */
+    private $enabled;
+
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="cour", type="array")
+     */
+    private $cour;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="cour")
+     * @ORM\JoinColumn(name="classe", referencedColumnName="id")
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="cour")
+     * @ORM\JoinColumn(name="enseignant", referencedColumnName="id")
+     */
+    private $enseignant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Matiere", inversedBy="cour")
+     * @ORM\JoinColumn(name="matiere", referencedColumnName="id")
+     */
+    private $matiere;
+
+    public function __construct()
+    {
+        $this->enabled =1;
+        $this->dateAjoute = new \DateTime();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Cour
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set dateAjoute
+     *
+     * @param \DateTime $dateAjoute
+     *
+     * @return Cour
+     */
+    public function setDateAjoute($dateAjoute)
+    {
+        $this->dateAjoute = $dateAjoute;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjoute
+     *
+     * @return \DateTime
+     */
+    public function getDateAjoute()
+    {
+        return $this->dateAjoute;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Cour
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return bool
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+    
+
+    /**
+     * Set classe
+     *
+     * @param \ERPBundle\Entity\Classe $classe
+     *
+     * @return Cour
+     */
+    public function setClasse(\ERPBundle\Entity\Classe $classe = null)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \ERPBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set enseignant
+     *
+     * @param \ERPBundle\Entity\Enseignant $enseignant
+     *
+     * @return Cour
+     */
+    public function setEnseignant(\ERPBundle\Entity\Enseignant $enseignant = null)
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    /**
+     * Get enseignant
+     *
+     * @return \ERPBundle\Entity\Enseignant
+     */
+    public function getEnseignant()
+    {
+        return $this->enseignant;
+    }
+
+    /**
+     * Set matiere
+     *
+     * @param \ERPBundle\Entity\Matiere $matiere
+     *
+     * @return Cour
+     */
+    public function setMatiere(\ERPBundle\Entity\Matiere $matiere = null)
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \ERPBundle\Entity\Matiere
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+
+    private $coursFichier;
+
+    /**
+     * @return mixed
+     */
+    public function getCoursFichier()
+    {
+        return $this->coursFichier;
+    }
+
+    /**
+     * @param mixed $coursFichier
+     */
+    public function setCoursFichier($coursFichier)
+    {
+        $this->coursFichier = $coursFichier;
+    }
+
+    public function getUploadDir() {
+        return 'uploads/etablissement/'.date('Y').'/enseignant';
+    }
+
+    public function getAbsolutRoot() {
+        return $this->getUploadDir() . $this->cour;
+    }
+
+    public function getWebpath() {
+        return $this->getUploadDir() . '/' . $this->cour;
+    }
+
+    public function getUploadRoot() {
+        return __DIR__ . '../../../../web/' . $this->getUploadDir() . '/';
+    }
+
+    public function uploadCour($id)
+    {
+        $this->cour =array();
+        if (!is_dir($this->getUploadRoot())) {
+            mkdir($this->getUploadRoot(), '0777', true);
+        }
+        if(!is_dir($this->getUploadRoot().'/'.$id.'/cours')){
+            mkdir($this->getUploadRoot().'/'.$id.'/cours','0777', true);
+        }
+        foreach($this->coursFichier as $file)
+        {
+            $path = md5(uniqid()) . '.' .$file->guessExtension();
+            array_push ($this->cour, $path);
+            move_uploaded_file($file->getPathName(), __DIR__ . '../../../../web/' . $this->getUploadDir() .'/'.$id.'/cours/'.$path);
+            unset($file);
+        }
+    }
+
+    /**
+     * Set cour
+     *
+     * @param array $cour
+     *
+     * @return Cour
+     */
+    public function setCour($cour)
+    {
+        $this->cour = $cour;
+
+        return $this;
+    }
+
+    /**
+     * Get cour
+     *
+     * @return array
+     */
+    public function getCour()
+    {
+        return $this->cour;
+    }
+}

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css">
+{{ form_start(form,{'action': path('admin_Diplome_add'),'method':'POST','attr':{'id':'addAnnee','novalidate':'novalidate'}}) }}
+    {{ form_row(form.nom) }}
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Ajouter" class="btn btn-primary site-btn pull-right" id="addEmployeeButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        // configure the bootstrap datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+        });
+    });
+</script>

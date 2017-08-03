@@ -1,0 +1,9 @@
+{{ form_start(form,{'action': path('admin_Diplome_update',{'id':id}),'method':'POST','attr':{'id':'addAnnee','novalidate':'novalidate'}}) }}
+    {{ form_row(form.nom) }}
+<span id="annee_dfin"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Update" class="btn btn-primary site-btn pull-right" id="addEmployeeButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

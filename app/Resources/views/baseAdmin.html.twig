@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="bootstrap default admin template">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+<body>
+<div class="loader-overlay">
+    <div class="loader-preview-area">
+        <div class="spinners">
+            <div class="loader">
+                <div class="rotating-plane"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <header id="header">
+        <div class="header-inner">
+            {{ render(controller('ERPBundle:Admin/Admin:header')) }}
+            {% block secondMenu %}{% endblock %}
+        </div>
+    </header>
+    <section id="main" class="container-fluid">
+        <div class="row">
+            <aside id="sidebar">
+                {% if(app.user.Etablissement.typeEtablissement == "Université") %}
+                    {% include '::headers/Admin/menuAdminUniversite.html.twig' %}
+                {% elseif(app.user.Etablissement.typeEtablissement == "lycée") %}
+                    {% include '::headers/Admin/menuAdminLycee.html.twig' %}
+                {% elseif(app.user.Etablissement.typeEtablissement == "college") %}
+                    {% include '::headers/Admin/menuAdminCollege.html.twig' %}
+                {% elseif(app.user.Etablissement.typeEtablissement == "primaire") %}
+                    {% include '::headers/Admin/menuAdminPrimaire.html.twig' %}
+                {% elseif(app.user.Etablissement.typeEtablissement == "garderie") %}
+                    {% include '::headers/Admin/menuAdminGardurie.html.twig' %}
+                {% elseif(app.user.Etablissement.typeEtablissement == "Centre Formation") %}
+                    {% include '::headers/Admin/menuAdminFormation.html.twig' %}
+                {% elseif(app.user.type == "etudiant") %}
+                    {% include '::headers/Front/menuEtudiant.html.twig' %}
+                {% endif %}
+            </aside>
+            {% block body %}{% endblock %}
+        </div>
+    </section>
+    <footer id="footer">
+        Copyright&copy; 2017, All Rights Reserved.
+    </footer>
+
+
+</div>
+{% block scripts %}{% endblock %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+</body>
+
+</html>

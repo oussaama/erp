@@ -1,0 +1,17 @@
+{% import "BoekkooiJqueryValidationBundle:Form:macros.js.twig" as gen %}
+
+{%- autoescape false -%}
+(function($) {
+    "use strict";
+    var form = $("{{- gen.form_jquery_selector(form) -}}");
+    var validator = form.validate();
+
+    {%- for field in fields -%}
+        {%- if field.rules|length > 0 -%}
+            form.find("*[name=\"{{ field.name|e('js') }}\"]").rules("add", {
+                {{- gen.rules(field.rules, enforce_validation_groups, true)  -}}
+            });
+        {%- endif -%}
+    {%- endfor -%}
+})(jQuery);
+{%- endautoescape -%}

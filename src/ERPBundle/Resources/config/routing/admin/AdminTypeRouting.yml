@@ -1,0 +1,32 @@
+admin_type_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/Type:index }
+    methods:  GET
+
+admin_type_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Admin/Type:show }
+    methods:  GET
+
+admin_type_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Admin/Type:new }
+    methods:  [GET, POST]
+
+admin_type_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Admin/Type:edit }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+admin_type_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Admin/Type:delete }
+    methods:  DELETE
+
+admin_Type_update:
+    path:     /payment/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Type:updateType }
+    options:
+        expose: true

@@ -1,0 +1,51 @@
+services:
+  boekkooi.jquery_validation.form.rule.processor.required_view:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\RequiredViewPass
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: 0 }
+
+  boekkooi.jquery_validation.form.rule.processor.collection:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\CollectionPrototypePass
+    public: false
+    tags:
+      - { name: form_rule_processor, priority: 0 }
+
+  boekkooi.jquery_validation.form.rule.processor.compound_copy_to_children:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\CompoundCopyToChildPass
+    arguments: [ '%boekkooi.jquery_validation.additional.required_group%' ]
+    public: false
+    tags:
+      - { name: form_rule_processor, priority: 10 }
+
+  boekkooi.jquery_validation.form.rule.processor.valid_constraint:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\ValidConstraintPass
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: -10 }
+
+  boekkooi.jquery_validation.form.rule.processor.value_duplicates_transformer:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\ValueToDuplicatesTransformerPass
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: 50 }
+
+  boekkooi.jquery_validation.form.rule.processor.datetime_array_transformer:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\DateTimeToArrayTransformerPass
+    arguments: [ '%boekkooi.jquery_validation.additional.required_group%' ]
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: 50 }
+
+  boekkooi.jquery_validation.form.rule.processor.datetime_string_transformer:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\DateTimeToStringTransformerPass
+    arguments: [ '%boekkooi.jquery_validation.additional.time%' ]
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: 50 }
+
+  boekkooi.jquery_validation.form.rule.processor.constraint_mapper:
+    class: Boekkooi\Bundle\JqueryValidationBundle\Form\Rule\Processor\ConstraintMappingPass
+    public: false
+    tags:
+     - { name: form_rule_processor, priority: 100 }

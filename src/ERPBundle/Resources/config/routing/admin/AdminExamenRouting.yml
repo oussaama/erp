@@ -1,0 +1,14 @@
+admin_Examen:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/AdminExamen:index }
+    methods:  GET
+
+admin_Examen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Admin/AdminExamen:delete }
+    methods:  DELETE
+
+admin_Examen_qualifier:
+    path:     /{id}/qualifier
+    defaults: { _controller: ERPBundle:Admin/AdminExamen:qualifier }
+    methods:  [GET, POST]

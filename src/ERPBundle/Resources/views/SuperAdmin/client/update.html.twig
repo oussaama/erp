@@ -1,0 +1,9 @@
+{{ form_start(form,{'action':path('super_admin_client_update',{'id':id}),'method':'POST'}) }}
+    {{ form_widget(form) }}
+    <div class="divider15"></div>
+    <div>
+        <input type="submit" value="update" class="btn btn-primary site-btn pull-right"/>
+    </div>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/global/js/global/form/formClient.js') }}"></script>

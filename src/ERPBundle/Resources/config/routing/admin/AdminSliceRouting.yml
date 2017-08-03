@@ -1,0 +1,37 @@
+admin_slice_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/Slice:index }
+    methods:  GET
+
+admin_slice_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Admin/Slice:show }
+    methods:  GET
+
+admin_slice_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Admin/Slice:new }
+    methods:  [GET, POST]
+
+admin_slice_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Admin/Slice:edit }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+admin_slice_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Admin/Slice:delete }
+    methods:  DELETE
+
+admin_slice_update:
+    path:     /slice/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Slice:updateSlice }
+    options:
+        expose: true
+
+admin_slice_payment:
+    path:     /{id}/tranche/payment
+    defaults: { _controller: ERPBundle:Admin/Slice:payment }
+    methods:  [GET, POST]

@@ -1,0 +1,12 @@
+{{ form_start(form,{'action': path('admin_Specialite_add'),'method':'POST','attr':{'id':'addNSpecialite','novalidate':'novalidate'}}) }}
+    {{ form_row(form.nomSpecialite) }}
+    <span id="specialite"></span>
+    {{ form_row(form.filiere) }}
+    <span id="specialite"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Ajouter" class="btn btn-primary site-btn pull-right" id="addSpecialiteButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>

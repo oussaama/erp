@@ -1,0 +1,30 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    erp.form.flow.pre_inscription:
+        class: ERPBundle\Form\insert\typeEtudiantPreInscription
+    _defaults:
+            autowire: true
+    erp_admin_etablissement:
+        class: ERPBundle\Form\typeAdminEtablissement
+        tags:
+            - { name: form.type, alias: erp_admin_etablissement }
+             
+    redirect.after.login:
+        class: ERPBundle\Redirection\AfterLoginRedirection
+        arguments: ['@router']
+
+    kernel.listener.kernel_request:
+          class: ERPBundle\EventListener\ErrorRedirect
+          arguments: ['@router']
+          tags:
+              - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+
+        
+
+    
+    

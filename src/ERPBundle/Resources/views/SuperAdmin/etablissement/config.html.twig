@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+{% block title %}SuperAdmin - Index{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window); //]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "0058b165fc78163e6d148677944b9ad6",
+                    petok: "8ddbcbc9feff803550a9f3ceca501f2cd0d28aa0-1496996202-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../../../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet"
+          href="{{ asset('assets/layouts/layout-left-menu/css/color/light/color-default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet"
+          href=".{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables/media/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-scroller/css/scroller.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/chartist/dist/chartist.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-menu/css/layout.min.css') }}"/>
+
+{% endblock %}
+{% block header %}
+    {{ render(controller('ERPBundle:SuperAdmin/SuperAdmin:header')) }}
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <section id="content-wrapper">
+            {% block menu %}{% include '::headers/menuSuperAdmin.html.twig' %}{% endblock %}
+            <div class="site-content-title">
+                <h2 class="float-xs-left content-title-main">Etablissement</h2>
+
+                <ol class="breadcrumb float-xs-right">
+                    <li class="breadcrumb-item">
+                        <span class="fs1" aria-hidden="true" data-icon=""></span>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Etablissement</a></li>
+                    <li class="breadcrumb-item active">Parametrage</li>
+                </ol>
+            </div>
+            <div class="col-xs-12">
+                <form action="{{ path('super_admin_etablissement_add_config') }}" method="post">
+                    <div class="dashboard-table dashboard-table-margin dashboard-table-search">
+                    <table data-plugin="datatable" class="table table-striped table-hover display nowrap content-order-shipment">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="checkbox product-check">
+                                    <div class="checkbox-squared float-xs-left">
+                                        <input type="checkbox" class="check_all float-xs-none" value="None"
+                                               id="checkbox-shipments" name="vertical"/>
+                                        <label for="checkbox-shipments"></label>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>Permission</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mail_message">
+                                    <div class="checkbox product-check">
+                                        <div class="checkbox-squared float-xs-left">
+                                            <input type="checkbox" id="checkbox-shipments1" name="edt" {% if permission.edt == true %} checked {% endif %}/>
+                                            <label for="checkbox-shipments1"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th><span class="">EDT</span></th>
+                            </tr>
+                            <tr>
+                                <td class="mail_message">
+                                    <div class="checkbox product-check">
+                                        <div class="checkbox-squared float-xs-left">
+                                            <input type="checkbox" id="checkbox-shipments2" name="class" {% if permission.class == true %} checked {% endif %}/>
+                                            <label for="checkbox-shipments2"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th><span class="">Gestion de Classe</span></th>
+                            </tr>
+                            <tr>
+                                <td class="mail_message">
+                                    <div class="checkbox product-check">
+                                        <div class="checkbox-squared float-xs-left">
+                                            <input type="checkbox" id="checkbox-shipments3" name="ue" {% if permission.ue == true %} checked {% endif %}/>
+                                            <label for="checkbox-shipments3"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th><span class="">Unité d'enseignement</span></th>
+                            </tr>
+                            <tr>
+                                <td class="mail_message">
+                                    <div class="checkbox product-check">
+                                        <div class="checkbox-squared float-xs-left">
+                                            <input type="checkbox" id="checkbox-shipments4" name="grh" {% if permission.grh == true %} checked {% endif %}/>
+                                            <label for="checkbox-shipments4"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th><span class="">Gestion des Ressources Humaines</span></th>
+                            </tr>
+                            <tr>
+                                <td class="mail_message">
+                                    <div class="checkbox product-check">
+                                        <div class="checkbox-squared float-xs-left">
+                                            <input type="checkbox" id="checkbox-shipments5" name="p" {% if permission.paiment == true %} checked {% endif %}/>
+                                            <label for="checkbox-shipments5"></label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th><span class="">Paiment</span></th>
+                            </tr>}
+                        </tbody>
+                    </table>
+                </div>
+                    <input type="hidden" name="id" value="{{ id }}"/>
+                    <button type="submit" class="btn btn-primary pull-right">Valide</button>
+                </form>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flot/jquery.flot.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Flot/jquery.flot.resize.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/chartist/dist/chartist.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/chartist-plugin-threshold/dist/chartist-plugin-threshold.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/responsive.bootstrap4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-scroller/js/dataTables.scroller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/chart.js/dist/Chart.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/chart.js/samples/utils.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/real_estate_dashboard.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/product_edit.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/global_validation.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-left-menu/js/layout.min.js') }}"></script>
+
+
+{% endblock %}

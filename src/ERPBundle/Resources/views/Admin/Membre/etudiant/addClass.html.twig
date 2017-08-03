@@ -1,0 +1,13 @@
+<form action="{{ path('admin_etudiant_class_add',{'id':id}) }}" , method="post">
+    <div>
+        <label for="erp_etudiant_specialite">Classe</label>
+        <select id="erp_etudiant_specialite" name="classe" data-validation="required" class="form-control">
+            {% for c in classe %}
+            <option value="{{ c.id }}">{{ c.nomClass }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div >
+        <button class="btn btn-primary site-btn" type="submit">Ajouter</button>
+    </div>
+</form>

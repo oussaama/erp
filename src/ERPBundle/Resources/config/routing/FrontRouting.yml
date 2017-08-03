@@ -1,0 +1,38 @@
+etudiant_membre:
+    resource: "@ERPBundle/Resources/config/routing/front/EtudiantRouting.yml"
+    prefix:   /etudiant
+enseignant_membre:
+    resource: "@ERPBundle/Resources/config/routing/front/EnseignantRouting.yml"
+    prefix:   /enseignant
+etudiant_document:
+    path:     /document/{id}/{crypte}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:document }
+
+etudiant_preInscription:
+    path:     /{etat}/pre_inscription
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:preInscription }
+
+form_filiere:
+    path:  /form_filiere/{id}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:formFiliere }
+    options:
+          expose: true
+
+form_specialite:
+    path:  /form_specialite/{id}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:formSpecialite }
+    options:
+          expose: true
+
+form_niveau:
+    path:  /form_niveau/{id}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:formNiveau }
+    options:
+          expose: true
+
+form_diplome:
+    path:  /form_diplome/{id}
+    defaults: { _controller: ERPBundle:Front/Etudiant/Etudiant:formDiplome }
+    options:
+          expose: true
+

@@ -1,0 +1,32 @@
+admin_status_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/Status:index }
+    methods:  GET
+
+admin_status_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Admin/Status:show }
+    methods:  GET
+
+admin_status_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Admin/Status:new }
+    methods:  [GET, POST]
+
+admin_status_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Admin/Status:edit }
+    methods:  [GET, POST]
+    options:
+            expose: true
+
+admin_status_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Admin/Status:delete }
+    methods:  DELETE
+
+admin_Status_update:
+    path:     /status/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Status:updateStatus }
+    options:
+        expose: true

@@ -1,0 +1,13 @@
+{{ form_start(form,{'action': path('admin_payment_update',{'id':id}),'method':'POST','attr':{'id':'new','novalidate':'novalidate'}}) }}
+    {{ form_row(form.payment) }}
+<span id="payment_payment"></span>
+{{ form_row(form.debut) }}
+<span id="payment_debut"></span>
+{{ form_row(form.fin) }}
+<span id="payment_dfin"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Ajouter" class="btn btn-primary site-btn pull-right" id="addEmployeeButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

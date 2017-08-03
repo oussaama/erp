@@ -1,0 +1,39 @@
+#Unite d'enseignement
+admin_Unite_index:
+    path:     /index
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:index }
+admin_Unite_add:
+    path:     /add
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:addUnite }
+admin_Unite_update:
+    path:     /update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:updateUnite }
+    options:
+        expose: true
+admin_Unite_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:deleteUnite }
+    options:
+        expose: true
+
+#Matiere
+admin_Matiere_add:
+    path:     /matiere/add/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:addMatiere }
+    options:
+        expose: true
+admin_Matiere_show:
+    path:     /matiere/show/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:showMatiere }
+    options:
+          expose: true
+admin_Matiere_update:
+    path:     /matiere/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:updateMatiere }
+    options:
+        expose: true
+admin_Matiere_delete:
+    path:     /matiere/delete/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminUnite:deleteMatiere }
+    options:
+        expose: true

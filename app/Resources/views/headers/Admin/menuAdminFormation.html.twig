@@ -1,0 +1,153 @@
+<div class="sidebar-menu">
+    <ul class="nav site-menu" id="site-menu">
+        <li class="sub-item">
+            <a href="{{ path('admin_homepage') }}" class="flat-buttons"><i class="icon_desktop"></i><span>Dashboard</span>
+            </a>
+        </li>
+        <li class="sub-item">
+            <a href="javascript:void(0)" class="flat-buttons">
+                <i class="icon_tags_alt"></i>
+                <span>Compte</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-title"><span>Compte</span></li>
+                <li class="main-item">
+                    <ul data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
+                        <ul class="submenu-sub">
+                            <li>
+                                <a href="{{ path('admin_profil') }}" class="flat-buttons">Profil</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_parametrage') }}" class="flat-buttons">Parametrage</a>
+                            </li>
+                        </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-item">
+            <a href="{{ path('admin_mailBox',{'type':'recu'}) }}" class="flat-buttons">
+                <i class="icon_ribbon_alt"></i>
+                <span>Messagerie</span>
+            </a>
+        </li>
+        <li class="sub-item">
+            <a href="javascript:void(0)" class="flat-buttons">
+                <i class="icon_puzzle"></i>
+                <span>Gestion</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-title"><span>Scolarité</span></li>
+                <li class="main-item">
+                    <ul data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
+                        <li>
+                            <a href="{{ path('admin_Class_index') }}" class="flat-buttons">Classe</a>
+                        </li>
+                        <li>
+                            <a href="bootbox.html" class="flat-buttons">Groupes</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Retard_index') }}" class="flat-buttons">Retard</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Appsense_index') }}" class="flat-buttons">Appcense</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Unite_index') }}" class="flat-buttons">Unite d'enseignement</a>
+                        </li>
+                        <li>
+                            <a href="masonry.html" class="flat-buttons">Emploi de Temps</a>
+                        </li>
+                        <li>
+                            <a href="rating.html" class="flat-buttons">Note</a>
+                        </li>
+                        <li>
+                            <a href="sortable_nestable.html" class="flat-buttons">Salle</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Examen') }}" class="flat-buttons">Examen</a>
+                        </li>
+                        <li>
+                            <a href="sortable_nestable.html" class="flat-buttons">Bulltins</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-item">
+            <a href="javascript:void(0)" class="flat-buttons">
+                <i class="icon_id"></i>
+                <span>Users</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="main-item">
+                    <ul data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
+                        <li>
+                            <a href="{{ path('admin_Employee') }}" class="flat-buttons">Employee</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Enseignant') }}" class="flat-buttons">Enseignant</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Etudiant') }}" class="flat-buttons">Etudiant</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_Entreprise') }}" class="flat-buttons">Entreprise</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-item">
+            <a href="{{ path('admin_mailBox',{'type':'recu'}) }}" class="flat-buttons">
+                <i class="icon_ribbon_alt"></i>
+                <span>Messagerie</span>
+            </a>
+        </li>
+        <li class="sub-item">
+            <a href="javascript:void(0)" class="flat-buttons">
+                <i class="icon_table"></i>
+                <span>Actualite</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-title"><span>Communication</span></li>
+                <li class="main-item">
+                    <ul data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
+                        <li>
+                            <a href="{{ path('admin_mailBox',{'type':'recu'}) }}" class="flat-buttons">Messagerie</a>
+                        </li>
+                        <li>
+                            <a href="bootstrap_tables.html" class="flat-buttons">Notification</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_agenda') }}" class="flat-buttons">Agenda</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-item">
+            <a href="javascript:void(0)" class="flat-buttons">
+                <i class="icon_wallet"></i>
+                <span>Parametrage</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="menu-title"><span>Parametrage</span></li>
+                <li class="main-item">
+                    <ul data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
+                        <li>
+                            <a href="social_widget.html" class="flat-buttons">Import</a>
+                        </li>
+                        <li>
+                            <a href="static_widget.html" class="flat-buttons">Export</a>
+                        </li>
+                        <li>
+                            <a href="data_widgets.html" class="flat-buttons">Archivage</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

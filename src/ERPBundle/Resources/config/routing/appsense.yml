@@ -1,0 +1,37 @@
+appsense_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:index }
+    methods:  GET
+
+appsense_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:show }
+    methods:  GET
+
+appsense_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:new }
+    methods:  [GET, POST]
+
+appsense_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:edit }
+    methods:  [GET, POST]
+
+appsense_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:delete }
+    methods:  DELETE
+
+
+appsense_Class_etudiant:
+    path:     /{id}
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:EtudiantClass }
+    options:
+        expose: true
+
+
+appsense_student:
+    path:     /{id}/affecter/absence
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:affecteAbsence }
+    methods:  [GET, POST]

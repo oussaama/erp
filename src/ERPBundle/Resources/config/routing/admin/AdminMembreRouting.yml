@@ -1,0 +1,124 @@
+admin_delete_compte:
+    path:     /delete/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:deleteCompte }
+    options:
+        expose: true
+
+#Employee
+admin_Employee:
+    path:     /employee
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:Employee }
+admin_Employee_add:
+    path:     /employee/add
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:addEmployee }
+admin_Employee_update:
+    path:     /employee/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:updateEmployee }
+    options:
+        expose: true
+admin_Employee_show:
+    path:     /employee/payment/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:showEmploye }
+    methods:  [GET, POST]
+
+#Enseignant
+admin_Enseignant:
+    path:     /enseignant
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:Enseignant }
+admin_Enseignant_add:
+    path:     /enseignant/add
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:addEnseignant }
+admin_Enseignant_update:
+    path:     /enseignant/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:updateEnseignant }
+    options:
+        expose: true
+
+#Etudiant
+admin_Etudiant:
+    path:     /etudiant
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:Etudiant }
+admin_Etudiant_add:
+    path:     /etudiant/add
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:addEtudiant }
+admin_Etudiant_update:
+    path:     /etudiant/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:updateEtudiant }
+    options:
+        expose: true
+admin_Etudiant_validation:
+    path:     /etudiant/validation/{id}/{etat}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:validateEtudiant }
+    options:
+        expose: true
+admin_etudiant_document:
+     path:     /etudiant/document/add/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:documentEtudiantAdd }
+admin_etudiant_show_document:
+     path:     /etudiant/document/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:documentEtudiant }
+     options:
+          expose: true
+admin_etudiant_detail:
+     path:     /etudiant/show/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:etudiantDetail }
+     options:
+         expose: true
+admin_Etudiant_show_all:
+     path:     /etudiant/detail/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:etudiantShowAll }
+     options:
+         expose: true
+admin_Etudiant_slice:
+    path:     /etudiant/tranche/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:etudiantSlice }
+admin_etudiant_payment:
+     path:     /etudiant/payment/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:paymentEtudiant }
+admin_etudiant_payment_list:
+     path:     /etudiant/payment/list/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:paymentListEtudiant }
+admin_etudiant_class:
+     path:     /etudiant/class/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:etudiantClass }
+     options:
+         expose: true
+admin_etudiant_class_add:
+     path:     /etudiant/class/add/{id}
+     defaults: { _controller: ERPBundle:Admin/AdminMembre:addEtudiantClass }
+
+#Parent
+admin_Parent:
+    path:     /parent/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:Parent }
+admin_Parent_add:
+    path:     /parent/add/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:addParent }
+    options:
+       expose: true
+admin_Parent_update:
+    path:     /parent/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:updateParent }
+    options:
+        expose: true
+
+#Entreprise
+admin_Entreprise:
+    path:     /entreprise
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:Entreprise }
+admin_Entreprise_add:
+    path:     /entreprise/add
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:addEntreprise }
+admin_Entreprise_update:
+    path:     /entreprise/update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:updateEntreprise }
+    options:
+        expose: true
+admin_Entreprise_show:
+    path:     /entreprise/payment/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:showEntreprise }
+    methods:  [GET, POST]
+
+admin_Entreprise_pdf:
+    path:     /entreprise/pdf
+    defaults: { _controller: ERPBundle:Admin/AdminMembre:pdf }

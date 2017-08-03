@@ -1,0 +1,22 @@
+#Classe
+admin_Class_index:
+    path:     /index
+    defaults: { _controller: ERPBundle:Admin/AdminClass:index }
+admin_Class_add:
+    path:     /add
+    defaults: { _controller: ERPBundle:Admin/AdminClass:addClass}
+admin_Class_update:
+    path:     /update/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminClass:updateClass }
+    options:
+        expose: true
+admin_Class_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ERPBundle:Admin/AdminClass:deleteClass }
+    options:
+        expose: true
+admin_Class_etudiant:
+    path:     /{id}
+    defaults: { _controller: ERPBundle:Admin/AdminClass:EtudiantClass }
+    options:
+        expose: true

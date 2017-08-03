@@ -1,0 +1,52 @@
+{
+    "name": "boekkooi/jquery-validation-bundle",
+    "type": "symfony-bundle",
+    "keywords": [ "jquery", "form", "validation", "validator", "symfony", "twig"],
+    "description": "Jquery form validation bundle for symfony 2",
+    "require": {
+        "php": ">=5.5",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/dependency-injection": "~2.3|~3.0",
+        "symfony/form": "~2.3, >=2.3.5|~3.0",
+        "symfony/validator": "~2.3|~3.0",
+        "symfony/twig-bundle": "~2.3|~3.0",
+        "symfony/twig-bridge": "~2.3|~3.0",
+        "twig/twig": "~1.14, >=1.14.2",
+        "doctrine/collections": "~1.0"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "~2.3|~3.0",
+        "symfony/dom-crawler": "~2.3|~3.0",
+        "symfony/finder": "~2.3|~3.0",
+        "symfony/yaml": "~2.3|~3.0",
+        "symfony/css-selector": "~2.3|~3.0",
+
+        "phpunit/phpunit": "~4.7@stable",
+        "symfony/phpunit-bridge": "~2.7@stable",
+
+        "behat/behat": "~3.0",
+        "behat/mink": "~1.6",
+        "behat/mink-selenium2-driver":  "~1.1",
+        "behat/mink-extension": "~2.0",
+        "behat/symfony2-extension": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Warnar Boekkooi",
+            "email": "warnar@boekkooi.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Boekkooi\\Bundle\\JqueryValidationBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Boekkooi\\Bundle\\JqueryValidationBundle\\": "tests/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

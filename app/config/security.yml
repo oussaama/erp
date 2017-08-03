@@ -1,0 +1,48 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_SUPER_ADMIN
+        ROLE_ADMIN: ROLE_ADMIN
+        ROLE_ETUDIANT : ROLE_ETUDIANT
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+       # default:
+           # remember_me:
+              #  key:      "%secret%"
+                #lifetime: 604800 # 1 week in seconds
+
+
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            form_login:
+                provider: fos_userbundle
+                #csrf_provider: form.csrf_provider
+                login_path: /login
+                check_path: /login_check
+                success_handler: redirect.after.login
+            logout:
+                path: /logout
+                target: /login
+               # success_handler: redirect.after.logout
+            anonymous:    true
+            #remember_me: true
+
+    access_control:
+      - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/backend, role: ROLE_SUPER_ADMIN }
+      - { path: ^/admin, role: ROLE_ADMIN }
+      - { path: ^/etudiant, role: ROLE_ETUDIANT }
+
+

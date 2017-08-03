@@ -1,0 +1,320 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Niveau
+ *
+ * @ORM\Table(name="niveau")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\NiveauRepository")
+ */
+class Niveau
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string")
+     */
+    private $niveau;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Etudiant", mappedBy="niveau")
+     */
+    private $etudiant;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Niveau", mappedBy="classe")
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etablissement", inversedBy="niveau")
+     * @ORM\JoinColumn(name="Etablissment", referencedColumnName="id")
+     */
+    private $Etablissement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Specialite", inversedBy="niveau")
+     * @ORM\JoinColumn(name="specialite", referencedColumnName="id")
+     */
+    private $specialite;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Matiere", mappedBy="niveau")
+     */
+    private $matiere;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UniteEnseignement", mappedBy="niveau")
+     */
+    private $unite;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param integer $niveau
+     *
+     * @return Niveau
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return int
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiant = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enabled = 1;
+    }
+
+    /**
+     * Add etudiant
+     *
+     * @param \ERPBundle\Entity\Etudiant $etudiant
+     *
+     * @return Niveau
+     */
+    public function addEtudiant(\ERPBundle\Entity\Etudiant $etudiant)
+    {
+        $this->etudiant[] = $etudiant;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiant
+     *
+     * @param \ERPBundle\Entity\Etudiant $etudiant
+     */
+    public function removeEtudiant(\ERPBundle\Entity\Etudiant $etudiant)
+    {
+        $this->etudiant->removeElement($etudiant);
+    }
+
+    /**
+     * Get etudiant
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Niveau
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param \ERPBundle\Entity\Etablissement $etablissement
+     *
+     * @return Niveau
+     */
+    public function setEtablissement(\ERPBundle\Entity\Etablissement $etablissement = null)
+    {
+        $this->Etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \ERPBundle\Entity\Etablissement
+     */
+    public function getEtablissement()
+    {
+        return $this->Etablissement;
+    }
+
+
+    /**
+     * Add classe
+     *
+     * @param \ERPBundle\Entity\Niveau $classe
+     *
+     * @return Niveau
+     */
+    public function addClasse(\ERPBundle\Entity\Niveau $classe)
+    {
+        $this->classe[] = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Remove classe
+     *
+     * @param \ERPBundle\Entity\Niveau $classe
+     */
+    public function removeClasse(\ERPBundle\Entity\Niveau $classe)
+    {
+        $this->classe->removeElement($classe);
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Add matiere
+     *
+     * @param \ERPBundle\Entity\Matiere $matiere
+     *
+     * @return Niveau
+     */
+    public function addMatiere(\ERPBundle\Entity\Matiere $matiere)
+    {
+        $this->matiere[] = $matiere;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiere
+     *
+     * @param \ERPBundle\Entity\Matiere $matiere
+     */
+    public function removeMatiere(\ERPBundle\Entity\Matiere $matiere)
+    {
+        $this->matiere->removeElement($matiere);
+    }
+
+    /**
+     * Get matiere
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatiere()
+    {
+        return $this->matiere;
+    }
+
+    /**
+     * Set specialite
+     *
+     * @param \ERPBundle\Entity\Specialite $specialite
+     *
+     * @return Niveau
+     */
+    public function setSpecialite(\ERPBundle\Entity\Specialite $specialite = null)
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * Get specialite
+     *
+     * @return \ERPBundle\Entity\Specialite
+     */
+    public function getSpecialite()
+    {
+        return $this->specialite;
+    }
+
+    /**
+     * Add unite
+     *
+     * @param \ERPBundle\Entity\UniteEnseignement $unite
+     *
+     * @return Niveau
+     */
+    public function addUnite(\ERPBundle\Entity\UniteEnseignement $unite)
+    {
+        $this->unite[] = $unite;
+
+        return $this;
+    }
+
+    /**
+     * Remove unite
+     *
+     * @param \ERPBundle\Entity\UniteEnseignement $unite
+     */
+    public function removeUnite(\ERPBundle\Entity\UniteEnseignement $unite)
+    {
+        $this->unite->removeElement($unite);
+    }
+
+    /**
+     * Get unite
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUnite()
+    {
+        return $this->unite;
+    }
+}

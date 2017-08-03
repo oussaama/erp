@@ -1,0 +1,7 @@
+{{ form_start(form,{'action':path('admin_registration',{'id':id}),'method':'POST'}) }}
+    {{ form_widget(form) }}
+<div>
+    <input type="submit" value="registre" class="btn btn-primary site-btn"/>
+</div>
+<input type="hidden" name="id" value="{{ id }}"/>
+{{ form_end(form) }}

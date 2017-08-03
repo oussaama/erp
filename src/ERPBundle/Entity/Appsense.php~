@@ -1,0 +1,83 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Appsense
+ *
+ * @ORM\Table(name="appsense")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\AppsenseRepository")
+ */
+class Appsense
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAppsense", type="datetime")
+     */
+    private $dateAppsense;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="appsense")
+     * @ORM\JoinColumn(name="etudiant", referencedColumnName="id")
+     */
+    private $etudiant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="appsense")
+     * @ORM\JoinColumn(name="enseignant", referencedColumnName="id")
+     */
+    private $enseignant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Matiere", inversedBy="appsense")
+     * @ORM\JoinColumn(name="matiere", referencedColumnName="id")
+     */
+    private $matiere;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateAppsense
+     *
+     * @param \DateTime $dateAppsense
+     *
+     * @return Appsense
+     */
+    public function setDateAppsense($dateAppsense)
+    {
+        $this->dateAppsense = $dateAppsense;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAppsense
+     *
+     * @return \DateTime
+     */
+    public function getDateAppsense()
+    {
+        return $this->dateAppsense;
+    }
+}
+

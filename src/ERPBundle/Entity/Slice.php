@@ -1,0 +1,419 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Slice
+ *
+ * @ORM\Table(name="slice")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\SliceRepository")
+ */
+class Slice
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total", type="integer")
+     */
+    private $total;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer")
+     */
+    private $montant;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateDeb", type="string")
+     */
+    private $dateDeb;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="reste", type="integer")
+     */
+    private $reste;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="state", type="string")
+     */
+    private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateFin", type="string")
+     */
+    private $dateFin;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="slice", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    protected $payments;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="qualified", type="boolean")
+     */
+    private $qualified;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="slice",cascade={"persist"})
+     * @ORM\JoinColumn(name="etudiant  ", referencedColumnName="id")
+     */
+    private $etudiant;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+
+    public function __construct()
+    {
+        $this->qualified= 1;
+        $this->createdAt = new \DateTime();
+        $this->payments = new \Doctrine\Common\Collections\ArrayCollection();
+     }
+
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Slice
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set total
+     *
+     * @param integer $total
+     *
+     * @return Slice
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return integer
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Slice
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+    
+
+    /**
+     * Set qualified
+     *
+     * @param boolean $qualified
+     *
+     * @return Slice
+     */
+    public function setQualified($qualified)
+    {
+        $this->qualified = $qualified;
+
+        return $this;
+    }
+
+    /**
+     * Get qualified
+     *
+     * @return boolean
+     */
+    public function getQualified()
+    {
+        return $this->qualified;
+    }
+
+    /**
+     * Add payment
+     *
+     * @param \ERPBundle\Entity\Payment $payment
+     *
+     * @return Slice
+     */
+    public function addPayment(\ERPBundle\Entity\Payment $payment)
+    {
+        $this->payments[] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \ERPBundle\Entity\Payment $payment
+     */
+    public function removePayment(\ERPBundle\Entity\Payment $payment)
+    {
+        $this->payments->removeElement($payment);
+    }
+
+    /**
+     * Get payments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * Set etudiant
+     *
+     * @param \ERPBundle\Entity\Etudiant $etudiant
+     *
+     * @return Slice
+     */
+    public function setEtudiant(\ERPBundle\Entity\Etudiant $etudiant = null)
+    {
+        $this->etudiant = $etudiant;
+
+        return $this;
+    }
+
+    /**
+     * Get etudiant
+     *
+     * @return \ERPBundle\Entity\Etudiant
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+
+    /**
+     * Set taux
+     *
+     * @param integer $taux
+     *
+     * @return Slice
+     */
+    public function setTaux($taux)
+    {
+        $this->taux = $taux;
+
+        return $this;
+    }
+
+    /**
+     * Get taux
+     *
+     * @return integer
+     */
+    public function getTaux()
+    {
+        return $this->taux;
+    }
+
+    /**
+     * Set dateDeb
+     *
+     * @param string $dateDeb
+     *
+     * @return Slice
+     */
+    public function setDateDeb($dateDeb)
+    {
+        $this->dateDeb = $dateDeb;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeb
+     *
+     * @return string
+     */
+    public function getDateDeb()
+    {
+        return $this->dateDeb;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param string $dateFin
+     *
+     * @return Slice
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return string
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     *
+     * @return Slice
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
+     * Set reste
+     *
+     * @param integer $reste
+     *
+     * @return Slice
+     */
+    public function setReste($reste)
+    {
+        $this->reste = $reste;
+
+        return $this;
+    }
+
+    /**
+     * Get reste
+     *
+     * @return integer
+     */
+    public function getReste()
+    {
+        return $this->reste;
+    }
+
+    /**
+     * Set state
+     *
+     * @param string $state
+     *
+     * @return Slice
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+}

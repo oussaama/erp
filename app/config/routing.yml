@@ -1,0 +1,44 @@
+erp:
+    resource: "@ERPBundle/Resources/config/routing.yml"
+    prefix:   /
+admin_registration:
+    path:  /register/admin/{id}
+    defaults: { _controller: ERPBundle:Registration/RegistrationAdmin:register }
+employee_registration:
+    path:  /register/employee
+    defaults: { _controller: ERPBundle:Registration/RegistrationEmployee:register }
+etudiant_registration:
+    path:  /register/etudiant/{etat}
+    defaults: { _controller: ERPBundle:Registration/RegistrationEtudiant:register }
+enseignant_registration:
+    path:  /register/enseignant
+    defaults: { _controller: ERPBundle:Registration/RegistrationEnseignant:register }
+parent_registration:
+    path:  /register/parent
+    defaults: { _controller: ERPBundle:Registration/RegistrationParent:register }
+entreprise_registration:
+    path:  /register/entreprise
+    defaults: { _controller: ERPBundle:Registration/RegistrationEntreprise:register }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+

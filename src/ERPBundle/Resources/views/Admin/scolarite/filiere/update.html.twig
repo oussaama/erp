@@ -1,0 +1,9 @@
+{{ form_start(form,{'action': path('admin_Filiere_update',{'id':id}),'method':'POST','attr':{'id':'addFiliere','novalidate':'novalidate'}}) }}
+    {{ form_row(form.filiere) }}
+    {{ form_row(form.diplome) }}
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="update" class="btn btn-primary site-btn pull-right" id="addFiliereButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

@@ -1,0 +1,299 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Emploi
+ *
+ * @ORM\Table(name="emploi")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\EmploiRepository")
+ */
+class Emploi
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjout", type="datetime")
+     */
+    private $dateAjout;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etablissement", inversedBy="emploi")
+     * @ORM\JoinColumn(name="etablissement", referencedColumnName="id")
+     */
+    private $etablissement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="emploi")
+     * @ORM\JoinColumn(name="classe", referencedColumnName="id",nullable=true)
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="emploi")
+     * @ORM\JoinColumn(name="enseignant", referencedColumnName="id",nullable=true)
+     */
+    private $enseignant;
+
+
+    public function __construct()
+    {
+        $this->enabled = 1;
+        $this->dateAjout = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Emploi
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set dateAjout
+     *
+     * @param \DateTime $dateAjout
+     *
+     * @return Emploi
+     */
+    public function setDateAjout($dateAjout)
+    {
+        $this->dateAjout = $dateAjout;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjout
+     *
+     * @return \DateTime
+     */
+    public function getDateAjout()
+    {
+        return $this->dateAjout;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Emploi
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param \ERPBundle\Entity\Etablissement $etablissement
+     *
+     * @return Emploi
+     */
+    public function setEtablissement(\ERPBundle\Entity\Etablissement $etablissement = null)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \ERPBundle\Entity\Etablissement
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param \ERPBundle\Entity\Classe $classe
+     *
+     * @return Emploi
+     */
+    public function setClasse(\ERPBundle\Entity\Classe $classe = null)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \ERPBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set enseignant
+     *
+     * @param \ERPBundle\Entity\Enseignant $enseignant
+     *
+     * @return Emploi
+     */
+    public function setEnseignant(\ERPBundle\Entity\Enseignant $enseignant = null)
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    /**
+     * Get enseignant
+     *
+     * @return \ERPBundle\Entity\Enseignant
+     */
+    public function getEnseignant()
+    {
+        return $this->enseignant;
+    }
+
+    public $fichierEmploi;
+
+    function setFichierEmploi(UploadedFile $file)
+    {
+        $this->fichierEmploi = $file;
+    }
+
+    function getFichierEmploi()
+    {
+        return $this->fichierEmploi;
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/etablissement/' . date('Y') . '/emploi';
+    }
+
+    public function getAbsolutRoot()
+    {
+        return $this->getUploadDir() . $this->nom;
+    }
+
+    public function getWebpath()
+    {
+        return $this->getUploadDir() . '/' . $this->nom;
+    }
+
+    public function getUploadRoot()
+    {
+        return __DIR__ . '../../../../web/' . $this->getUploadDir() . '/';
+    }
+
+    public function uploadEmploi()
+    {
+        if (!is_dir($this->getUploadRoot())) {
+            mkdir($this->getUploadRoot(), '0777', true);
+        }
+        $path = md5(uniqid()) . '.' . $this->fichierEmploi->guessExtension();
+        $this->nom = $path;
+        move_uploaded_file($this->fichierEmploi->getPathName(), __DIR__ . '../../../../web/' . $this->getUploadDir() . '/' . $path);
+        unset($this->fichierEmploi);
+    }
+
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Emploi
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+}

@@ -1,0 +1,318 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Admin - Tranches Paiement{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window);//]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "82f71ab91e52e9dc6f8d10c6ee544add",
+                    petok: "07d9b5c669a4fa4a06776c98721e4d32cea870c5-1497805119-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/Waves/dist/waves.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet"
+          href="{{ asset('assets/layouts/layout-material-menu/css/color/light/color-default.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/css-hamburgers/dist/hamburgers.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/morris.js/morris.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.theme.default.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables/media/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-icon-menu/css/layout.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css">
+    <style>
+        .menu-paiment:hover {
+            background: #087380 !important;
+        }
+
+        .input-margin {
+            margin-top: 10px;
+        }
+
+        .datepicker-switch {
+            color: #087380;
+        }
+
+        .next, .prev {
+            color: #087310;
+        }
+    </style>
+{% endblock %}
+{% block secondMenu %}
+    <div id="header-icon">
+        <div class="header-width">
+            <div class="col-xl-12">
+                <div class="menucontainer">
+                    <div class="overlapblackbg"></div>
+                    <a id="navtoggle" class="animated-arrow"><span></span></a>
+                    <nav id="nav" class="topmenu" role="navigation">
+                        <ul class="menu-list live-search-list">
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Employee') }}">
+                                    <span class="icon_desktop header-icon" aria-hidden="true"></span>
+                                    <span>Personnel</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Enseignant') }}">
+                                    <span class="icon_tool header-icon" aria-hidden="true"></span>
+                                    <span>Enseignant</span>
+                                </a>
+                            </li>
+                            <li style="background:#087380;">
+                                <a href="{{ path('admin_Etudiant') }}">
+                                    <span class="icon_toolbox header-icon" aria-hidden="true"
+                                          style="color: #fff;"></span>
+                                    <span style="color:white">Etudiant</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Entreprise') }}">
+                                    <span class="icon_tools header-icon" aria-hidden="true"></span>
+                                    <span>Tuteur de stage</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <section id="content-wrapper" class="form-elements">
+
+        <div class="site-content-title">
+            <h2 class="float-xs-left content-title-main">ajout tranche</h2>
+
+            <ol class="breadcrumb float-xs-right">
+                <li class="breadcrumb-item">
+                    <span class="fs1" aria-hidden="true" data-icon=""></span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">Tranches</a></li>
+                <li class="breadcrumb-item active"> ajout</li>
+            </ol>
+
+        </div>
+
+        <div class="contain-inner dashboard-v2">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12 xl-dashboard-v2">
+                        <div class="row">
+                            <div class="col-md-12 lg-dashboard-v2">
+                                <div class="content">
+                                    <div class="dashboard-content">
+                                        <div class="dashboard-header">
+                                            <h4 class="page-content-title float-xs-left">Ajout tranche</h4>
+                                            <div class="dashboard-action">
+                                                <ul class="right-action float-xs-right">
+                                                    <li data-widget="collapse"><a href="javascript:void(0)"
+                                                                                  aria-hidden="true"><span
+                                                                    class="icon_minus-06" aria-hidden="true"></span></a>
+                                                    </li>
+                                                    <li data-widget="close"><a href="javascript:void(0)"><span
+                                                                    class="icon_close" aria-hidden="true"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-box col-lg-12  col-xs-12 col-xl-12">
+                                            {% if msg != null %}
+                                                <div class="alert alert-danger">
+                                                    {% for m in msg %}
+                                                    <center><span class="text-center">{{ m }}</span></center>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                            <form action=" {{ path('admin_Etudiant_slice',{'id':id}) }}" method="POST"
+                                                  id="addTranche">
+                                                <div class="row">
+                                                    <div class="col-md-4 input-form">
+                                                        <label>Total</label>
+                                                        <input type="text" class="form-control" name="total" id=""
+                                                               placeholder="saisie total" required/>
+                                                    </div>
+                                                    <div class="col-md-4 input-form">
+                                                        <label>Frais d'inscription</label>
+                                                        <input type="number" class="form-control" name="frais"
+                                                               placeholder="saisie frais inscription" required/>
+                                                    </div>
+                                                    <div class="col-md-4 input-form">
+                                                        <label>Nombre de tranche</label>
+                                                        <input type="number" class="form-control" name="nbr" id="nbr"
+                                                               placeholder="saisie nombre de tranche" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="tranche"></div>
+                                                </div>
+                                                <div class="divider15"></div>
+                                                <div>
+                                                    <input type="submit" value="ajouter"
+                                                           class="btn btn-primary site-btn pull-right"
+                                                           id="addClassButton" name="submit"/>
+                                                </div>
+                                                <input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/raphael/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/morris.js/morris.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/jquery-mousewheel/jquery.mousewheel.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/arcseldon-jquery.sparkline/dist/jquery.sparkline.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/dashboard_v4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-left-icon-menu/js/layout.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/responsive.bootstrap4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-scroller/js/dataTables.scroller.js') }}"></script>
+    <script>
+        $("#nbr").on('keyup', function () {
+            nb = $("#nbr").val();
+            if (nb < 10) {
+                str = "";
+                for (i = 0; i < nb; i++) {
+                    x = i + 1;
+                    str += '<div class="col-md-2"><label style=" margin-top:18px;font-weight:500;">Tranche ' + x + '</label></div>' +
+                        '<div class="col-md-4"><input type="number" class="form-control ta' + i + '" style=" margin-top:10px;" placeholder="saisie Montant de tranche '+x+'" name="ta' + i + '" required/></div>' +
+                        '<div class="col-md-3"><input type="date" class="form-control js-datepicker" style=" margin-top:10px;" placeholder="saisie date debut" id="deb' + i + '" name="deb' + i + '" required/></div>' +
+                        '<div class="col-md-3"><input type="date" class="form-control js-datepicker" style=" margin-top:10px;" placeholder="saisie date fin" id="fin' + i + '" name="fin' + i + '" required/></div>';
+                }
+                str+='<div class="col-md-10"></div><div class="col-md-2"><span>Total : <span id="solde">0</span></div>';
+                $('.tranche').html(str);
+            } else {
+                alert('nombre sup a 10');
+            }
+        });
+    </script>
+    <script>
+        $('.ta0').onfocusout(function(){
+            alert($('.ta0').val());
+            /* sold=0;
+             for( i=1;i<=nb;i++){
+             sold+=$('ta'+i).val();
+             }
+             $("#solde").html(sold);*/
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            // configure the bootstrap datepicker
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+            });
+        });
+    </script>
+    <script>$('#user').addClass('active');</script>
+{% endblock %}
+

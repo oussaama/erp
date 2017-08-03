@@ -1,0 +1,69 @@
+super_admin_header:
+    path:     /header
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:header }
+super_admin_homepage:
+    path:     /index
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:index }
+
+#route d'etablissement
+super_admin_etablissement:
+    path:     /etablissement/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:Etablissement }
+    requirements:
+            id: \d+
+super_admin_etablissement_create:
+    path:     /etablissement/create/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:createEtablissement }
+    requirements:
+         id: \d+
+    options:
+        expose: true
+
+super_admin_etablissement_admin:
+    path:     /etablissement/admin/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:addAdminEtablissement }
+    requirements:
+         id: \d+
+    options:
+        expose: true
+super_admin_etablissement_config:
+    path:     /etablissement/config/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:configEtablissement }
+    requirements:
+        id: \d+
+super_admin_etablissement_add_config:
+    path:     /etablissement/config/add
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:ajoutConfigEtablissement }
+
+super_admin_etablissement_update:
+    path:     /etablissement/update/{etab}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:updateEtablissement }
+    requirements:
+        etab: \d+
+    options:
+        expose: true
+super_admin_etablissement_delete:
+    path:     /etablissement/delete/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:deleteEtablissement }
+    requirements:
+        id: \d+
+    
+#route compte client
+super_admin_client:
+    path:     /client
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:Client }
+super_admin_client_add:
+    path:     /client/add
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:addClient }
+super_admin_client_delete:
+    path:     /client/delete/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:deleteCompteClient }
+    requirements:
+        id: \d+
+super_admin_client_update:
+    path:     /client/update/{id}
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:updateCompteClient }
+    requirements:
+        id: \d+
+    options:
+            expose: true

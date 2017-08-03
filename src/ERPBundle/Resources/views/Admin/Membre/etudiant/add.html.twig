@@ -1,0 +1,502 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Admin - Etudiant{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window);//]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "82f71ab91e52e9dc6f8d10c6ee544add",
+                    petok: "07d9b5c669a4fa4a06776c98721e4d32cea870c5-1497805119-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/Waves/dist/waves.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet"
+          href="{{ asset('assets/layouts/layout-material-menu/css/color/light/color-default.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/css-hamburgers/dist/hamburgers.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/morris.js/morris.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/owl.carousel/dist/assets/owl.theme.default.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables/media/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-icon-menu/css/layout.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css">
+    <style>
+        .menu-paiment:hover {
+            background: #087380 !important;
+        }
+
+        .input-margin {
+            margin-top: 10px;
+        }
+        .datepicker-switch{
+            color: #087380;
+        }
+        .next ,.prev {
+            color: #087310;
+        }
+    </style>
+{% endblock %}
+{% block secondMenu %}
+    <div id="header-icon">
+        <div class="header-width">
+            <div class="col-xl-12">
+                <div class="menucontainer">
+                    <div class="overlapblackbg"></div>
+                    <a id="navtoggle" class="animated-arrow"><span></span></a>
+                    <nav id="nav" class="topmenu" role="navigation">
+                        <ul class="menu-list live-search-list">
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Employee') }}">
+                                    <span class="icon_desktop header-icon" aria-hidden="true"></span>
+                                    <span>Personnel</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Enseignant') }}">
+                                    <span class="icon_tool header-icon" aria-hidden="true"></span>
+                                    <span>Enseignant</span>
+                                </a>
+                            </li>
+                            <li style="background:#087380;">
+                                <a href="{{ path('admin_Etudiant') }}">
+                                    <span class="icon_toolbox header-icon" aria-hidden="true"
+                                          style="color: #fff;"></span>
+                                    <span style="color:white">Etudiant</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_Entreprise') }}">
+                                    <span class="icon_tools header-icon" aria-hidden="true"></span>
+                                    <span>Tuteur de stage</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <section id="content-wrapper" class="form-elements">
+
+        <div class="site-content-title">
+            <ol class="breadcrumb float-xs-right">
+                <li class="breadcrumb-item">
+                    <span class="fs1" aria-hidden="true" data-icon=""></span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">Etudiant</a></li>
+                <li class="breadcrumb-item active">Ajout</li>
+            </ol>
+
+        </div>
+
+        <div class="contain-inner dashboard-v2">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12 xl-dashboard-v2">
+                        <div class="row">
+                            <div class="col-md-12 lg-dashboard-v2">
+                                <div class="content">
+                                    <div class="divider-lg-spacing divider-xs-spacing"></div>
+                                    <div class="dashboard-content">
+                                        <div class="dashboard-header">
+                                            <h4 class="page-content-title float-xs-left">Ajout Etudiant </h4>
+                                            <div class="dashboard-action">
+                                                <ul class="right-action float-xs-right">
+                                                    <li data-widget="collapse">
+                                                        <a href="javascript:void(0)" aria-hidden="true"><span
+                                                                    class="icon_minus-06" aria-hidden="true"></span></a>
+                                                    </li>
+                                                    <li data-widget="close"><a href="javascript:void(0)"><span
+                                                                    class="icon_close" aria-hidden="true"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="divider15"></div>
+                                            {{ form_start(form,{'action': path('etudiant_registration',{'etat':0}),'method':'POST','attr':{'id':'addEtudiant'}}) }}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_profile"></i></span>
+                                                        {{ form_row(form.username,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_username"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_profile"></i></span>
+                                                        {{ form_row(form.nom,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_nom"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_profile"></i></span>
+                                                        {{ form_row(form.prenom,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_prenom"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_wallet"></i></span>
+                                                        {{ form_row(form.cin,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_cin"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_calendar"></i></span>
+                                                        {{ form_row(form.naissance) }}
+                                                    </div>
+                                                    <span id="etudiant_fullName"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_wallet"></i></span>
+                                                        {{ form_row(form.lieu) }}
+                                                    </div>
+                                                    <span id="etudiant_cin"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_profile"></i></span>
+                                                        {{ form_row(form.sex) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_house"></i></span>
+                                                        {{ form_row(form.pays) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i class="icon icon_house"></i></span>
+                                                        {{ form_row(form.adresse) }}
+                                                    </div>
+                                                    <span id="etudiant_cp"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                                <span class="input-group-addon"><i
+                                                                            class="icon icon_house"></i></span>
+                                                        {{ form_row(form.ville) }}
+                                                    </div>
+                                                    <span id="etudiant_ville"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                                <span class="input-group-addon"><i
+                                                                            class="icon icon_house"></i></span>
+                                                        {{ form_row(form.cp,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_pays"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                                <span class="input-group-addon"><i
+                                                                            class="icon icon_house"></i></span>
+                                                        {{ form_row(form.niveauEtude,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_pays"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_document"></i></span>
+                                                        {{ form_row(form.diplome,{'attr': {'onChange':'Diplome();'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_document"></i></span>
+                                                        {{ form_row(form.filiere,{'attr': {'onChange':'Filiere();'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_target"></i></span>
+                                                        {{ form_row(form.specialite,{'attr': {'onChange':'Niveau();','onSelect':'Niveau()'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_toolbox"></i></span>
+                                                        {{ form_row(form.niveau) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_phone"></i></span>
+                                                        {{ form_row(form.tel,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_tel"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_mail"></i></span>
+                                                        {{ form_row(form.email) }}
+                                                    </div>
+                                                    <span id="etudiant_email"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_key"></i></span>
+                                                        {{ form_row(form.plainPassword.first) }}
+                                                    </div>
+                                                    <span id="etudiant_p1"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_key"></i></span>
+                                                        {{ form_row(form.plainPassword.second,{'attr': {'onFocusOut':'validation();'}}) }}
+                                                    </div>
+                                                    <span id="etudiant_p2"></span>
+                                                </div>
+                                            </div>
+                                            <div class="divider15"></div>
+                                            <div>
+                                                <input type="submit" value="ajouter"
+                                                       class="btn btn-primary site-btn pull-right" id="addEtudiantButton">
+                                            </div>
+                                            <input type="hidden" value="pre-inscrit" name="test"/>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/raphael/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/morris.js/morris.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/jquery-mousewheel/jquery.mousewheel.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/arcseldon-jquery.sparkline/dist/jquery.sparkline.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/dashboard_v4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-left-icon-menu/js/layout.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/datatables/media/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/global/plugins/datatables-responsive/js/responsive.bootstrap4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-scroller/js/dataTables.scroller.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+            // configure the bootstrap datepicker
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                maxDate: new Date(2007, 1, 1),
+                minDate: new Date(2005,1,1),
+            });
+        });
+    </script>
+    <script>
+        $('#user').addClass('active');
+        $('#erp_etudiant_niveau').prepend('<option value="" selected="selected">Niveau</option>');
+    </script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/form/formEtudiant.js') }}"></script>
+    <script>
+        $('#erp_etudiant_pre_inscription_sex').prepend('<option value="" selected="selected">Selectionner votre sexe</option>');
+        $('#erp_etudiant_pre_inscription_niveauEtude').prepend('<option value="" selected="selected">Selectionner votre Niveau d\'etudes</option>');
+        $('#erp_etudiant_pre_inscription_diplome').prepend('<option value="" selected="selected">Selectionner votre Diplome Souhaiter</option>');
+        $('#erp_etudiant_pre_inscription_specialite').prepend('<option value="" selected="selected">Selectionner votre Spécialite</option>');
+        $('#erp_etudiant_pre_inscription_filiere').prepend('<option value="" selected="selected">Selectionner votre Filiere</option>');
+        $('#erp_etudiant_pre_inscription_niveau').prepend('<option value="" selected="selected">Selectionner votre Niveau</option>');
+
+        function Diplome() {
+            var id_select = $('#erp_etudiant_pre_inscription_diplome').val();
+            str = '<option value="" selected="selected">Selectionner votre Filiere</option>';
+            $.ajax({
+                url: Routing.generate('form_diplome', {'id': id_select}),
+                success: function (response) {
+                    $.each(response, function (index, value) {
+                        str += '<option value="' + value.id + '"> ' + value.nom + ' </option>';
+                    });
+                    $('#erp_etudiant_pre_inscription_filiere').html(str);
+                },
+                error: function (json) {
+                    console.log(json);
+                }
+            });
+        }
+
+        function Filiere() {
+            var id_select = $('#erp_etudiant_pre_inscription_filiere').val();
+            str = '<option value="" selected="selected">Selectionner votre Specialite</option>';
+            $.ajax({
+                url: Routing.generate('form_filiere', {'id': id_select}),
+                success: function (response) {
+                    $.each(response, function (index, value) {
+                        str += '<option value="' + value.id + '"> ' + value.filiere + ' </option>';
+                    });
+                    $('#erp_etudiant_pre_inscription_specialite').html(str);
+                },
+                error: function (json) {
+                    console.log(json);
+                }
+            });
+        }
+        function Niveau() {
+            var id_select = $('#erp_etudiant_pre_inscription_specialite').val();
+            str = '<option value="" selected="selected">Selectionner votre Niveau</option>';
+            $.ajax({
+                url: Routing.generate('form_niveau', {'id': id_select}),
+                success: function (response) {
+                    $.each(response, function (index, value) {
+                        str += '<option value="' + value.id + '"> ' + value.niveau + ' </option>';
+                    });
+                    $('#erp_etudiant_pre_inscription_niveau').html(str);
+                },
+                error: function (json) {
+                    console.log(json);
+                }
+            });
+
+            console.log($("#erp_etudiant_pre_inscription_specialite option:selected"));
+        }
+        function validation() {
+            if (valide1 == true && valide3 == true && valide4 == true && valide5 == true && valide6 == true && valide7 == true ) {
+                $('#addEtudiantButton').prop('disabled', false);
+            } else {
+                $('#addEtudiantButton').prop('disabled', true);
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,97 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Media
+ *
+ * @ORM\Table(name="media")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\MediaRepository")
+ */
+class Media
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Contact", inversedBy="media")
+     * @ORM\JoinColumn(name="contact", referencedColumnName="id")
+     */
+    private $contact;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Media
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param \ERPBundle\Entity\Contact $contact
+     *
+     * @return Media
+     */
+    public function setContact(\ERPBundle\Entity\Contact $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \ERPBundle\Entity\Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+
+}

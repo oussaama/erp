@@ -1,0 +1,32 @@
+admin_payment_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/Payment:index }
+    methods:  GET
+
+admin_payment_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Admin/Payment:show }
+    methods:  GET
+
+admin_payment_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Admin/Payment:new }
+    methods:  [GET, POST]
+
+admin_payment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Admin/Payment:edit }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+admin_payment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Admin/Payment:delete }
+    methods:  DELETE
+
+admin_Payment_update:
+    path:     /payment/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Payment:updatePayment }
+    options:
+        expose: true

@@ -1,0 +1,180 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi: ~
+    translator: { fallbacks: ['%locale%'] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: {  enabled: true ,enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.project_dir%/var/data/data.sqlite"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       smtp.gmail.com
+    username:   akroutiioussama@gmail.com
+    password:   00000000ok
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: 'KnpPaginatorBundle:Pagination:sliding.html.twig'     # sliding pagination controls template
+        sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig'
+
+
+fos_js_routing:
+    routes_to_expose: [ admin_delete_compte , admin_Employee_update , admin_Entreprise_update , admin_Parent_update , admin_Etudiant_update , admin_Enseignant_update ,admin_Parent_add , admin_etudiant_show_document , form_filiere , form_specialite , form_niveau ,
+                         admin_payment_edit , admin_status_edit , admin_type_edit , admin_slice_edit ,admin_etudiant_class , admin_Diplome_add , admin_Diplome_update , methode_paiment ,admin_Specialite_delete , admin_unite_update , enseignant_delete_cours , admin_Emploi_delete ,
+                        admin_Class_update , admin_Class_delete , admin_Unite_update , admin_Unite_delete , admin_Matiere_show, admin_Matiere_update , admin_Matiere_delete , admin_Retard_detail , admin_Etudiant_validation
+                        super_admin_etablissement_create , super_admin_etablissement_admin , super_admin_client_update , super_admin_etablissement_update , verification_username , verification_cin , verification_email]
+    cache_control:
+        # All are optional, defaults shown
+        public: false   # can be true (public) or false (private)
+            maxage: null    # integer value, e.g. 300
+            smaxage: null   # integer value, e.g. 300
+            expires: null   # anything that can be fed to "new \DateTime($expires)", e.g. "5 minutes"
+            vary: []
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: ERPBundle\Entity\User
+    use_listener: false
+    service:
+        user_manager: pugx_user_manager
+    registration:
+            confirmation:
+                enabled: true
+    from_email:
+        address: "akroutiioussema@gmail.com"
+        sender_name: "Super Admin"
+
+
+
+pugx_multi_user:
+  users:
+    admin:
+        entity:
+          class: ERPBundle\Entity\Admin
+#          factory:
+        registration:
+          form:
+            type: ERPBundle\Form\insert\typeAdminEtablissement
+            name: erp_admin_etablissement
+            validation_groups:  [Registration, Default]
+          template: ERPBundle:SuperAdmin/etablissement/admin.html.twig
+        #profile:
+          #form:
+            #type: ERPBundle\Form\Type\ProfileUserOneFormType
+            #name: fos_user_profile_form
+            #validation_groups:  [Profile, Default]
+    employee:
+        entity:
+            class: ERPBundle\Entity\Employee
+    #          factory:
+        registration:
+            form:
+                type: ERPBundle\Form\insert\typeEmployee
+                name: erp_employee
+                validation_groups:  [Registration, Default]
+            template: ERPBundle:Admin/universite/employee/add.html.twig
+    enseignant:
+            entity:
+                  class: ERPBundle\Entity\Enseignant
+            #          factory:
+            registration:
+                form:
+                    type: ERPBundle\Form\insert\typeEnseignant
+                    name: erp_enseignant
+                    validation_groups:  [Registration, Default]
+                template: ERPBundle:Admin/universite/enseignant/add.html.twig
+    etudiant:
+        entity:
+              class: ERPBundle\Entity\Etudiant
+        #          factory:
+        registration:
+            form:
+                type: ERPBundle\Form\insert\typeEtudiantPreInscription
+                name: erp_etudiant_pre_inscription
+                validation_groups:  [Registration, Default]
+            template: ERPBundle:Admin/universite/etudiant/add.html.twig
+    parent:
+        entity:
+            class: ERPBundle\Entity\Parents
+            #          factory:
+        registration:
+            form:
+                type: ERPBundle\Form\insert\typeParent
+                name: erp_parent
+                validation_groups:  [Registration, Default]
+            template: ERPBundle:Admin/universite/parent/add.html.twig
+    entreprise:
+        entity:
+            class: ERPBundle\Entity\Entreprise
+                #          factory:
+        registration:
+            form:
+                type: ERPBundle\Form\insert\typeEntreprise
+                name: erp_entreprise
+                validation_groups:  [Registration, Default]
+            template: ERPBundle:Admin/universite/entreprise/add.html.twig

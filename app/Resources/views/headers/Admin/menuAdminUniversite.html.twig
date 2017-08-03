@@ -1,0 +1,42 @@
+<div class="sidebar-menu">
+    <ul class="nav site-menu" id="site-menu">
+        <li class="sub-item" id="dashboard">
+            <a href="{{ path('admin_homepage') }}" class="flat-buttons"><i class="icon_desktop"></i><span>Dashboard</span></a>
+        </li>
+        <li class="sub-item" id="user">
+            <a href="{{ path('admin_Employee') }}" class="flat-buttons">
+                <i class="icon_group"></i>
+                <span>UTILSATEURS</span>
+            </a>
+        </li>
+        <li class="sub-item"  id="gestion">
+            <a href="{{ path('admin_Annee_index') }}" class="flat-buttons"><i class="icon_tags_alt"></i><span>SCOLARITE</span></a>
+        </li>
+        <li class="sub-item" id="scolarite">
+            <a href="{{ path('admin_Examen') }}" class="flat-buttons"><i class="icon_puzzle"></i><span>EXAMEN</span></a>
+        </li>
+        <li class="sub-item" id="scolarite">
+            <a href="{{ path('admin_Examen') }}" class="flat-buttons"><i class="icon_puzzle"></i><span>DOCUMENTS</span></a>
+        </li>
+
+        <li class="sub-item" id="communication">
+            <a href="{{ path('admin_mailBox',{'type':'recu'}) }}" class="flat-buttons" >
+                <i class="icon_mail_alt"></i>
+                <span>COMMUNICATION</span>
+            </a>
+        </li>
+        <li class="sub-item" id="paiment">
+            <a href="{{ path('admin_payment_index') }}" class="flat-buttons"><i class="icon_tags_alt"></i><span>PAIEMENT</span></a>
+        </li>
+        <li class="sub-item" id="scolarite">
+            <a href="{{ path('admin_Examen') }}" class="flat-buttons"><i class="icon_puzzle"></i><span>BIBLIOTHEQUES</span></a>
+        </li>
+        <li class="sub-item">
+            <a href="{{ path('admin_rapport') }}" class="flat-buttons">
+                <i class="icon_wallet"></i>
+                <span>PARAMETRAGES</span>
+            </a>
+        </li>
+    </ul>
+</div>
+

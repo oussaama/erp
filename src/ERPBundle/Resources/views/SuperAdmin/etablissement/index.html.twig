@@ -1,0 +1,292 @@
+{% extends 'base.html.twig' %}
+{% block title %}SuperAdmin - Index{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window); //]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "0058b165fc78163e6d148677944b9ad6",
+                    petok: "8ddbcbc9feff803550a9f3ceca501f2cd0d28aa0-1496996202-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../../../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet" href="{{ asset('assets/layouts/layout-left-menu/css/color/light/color-default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables/media/css/dataTables.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ asset('assets/global/plugins/datatables-scroller/css/scroller.bootstrap4.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-menu/css/layout.min.css') }}"/>
+
+{% endblock %}
+{% block header %}
+    {{ render(controller('ERPBundle:SuperAdmin/SuperAdmin:header')) }}
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <section id="content-wrapper">
+            {% block menu %}{% include '::headers/menuSuperAdmin.html.twig' %}{% endblock %}
+            <div class="site-content-title">
+                <h2 class="float-xs-left content-title-main">Etablissement</h2>
+
+                <ol class="breadcrumb float-xs-right">
+                    <li class="breadcrumb-item">
+                        <span class="fs1" aria-hidden="true" data-icon=""></span>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Etablissement</a></li>
+                    <li class="breadcrumb-item active">index</li>
+                </ol>
+
+            </div>
+            <div class="content content-datatable datatable-width">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="divider15"></div>
+                        <table data-plugin="datatable" data-responsive="true"
+                               class="table table-striped table-hover dt-responsive">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Type</th>
+                                <th>Academie</th>
+                                <th>Annee</th>
+                                <th>Adresse</th>
+                                <th>Departement</th>
+                                <th>Pays</th>
+                                <th>Télephone</th>
+                                <th>Fax</th>
+                                <th>Site Web</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for e in etablissement %}
+                                <tr>
+                                    <td>{{ e.nomEtablissement }}</td>
+                                    <td>{{ e.typeEtablissement }}</td>
+                                    <td>{{ e.academie }}</td>
+                                    <td>{{ e.anneeScolaire }}</td>
+                                    <td>{{ e.adresse }} , {{ e.ville }} {{ e.codePostal }}</td>
+                                    <td>{{ e.departement }}</td>
+                                    <td>{{ e.pays }}</td>
+                                    <td>{{ e.tel }}</td>
+                                    <td>{{ e.fax }}</td>
+                                    <td>{{ e.siteWeb }}</td>
+                                    <td>{{ e.mail }}</td>
+                                    <td>
+                                        {% if e.admin != null %}
+                                            <a href="{{ path('super_admin_etablissement_config',{'id':e.id}) }}"><i
+                                                        class="icon_tools text-info"></i></a>
+                                        {% else %}
+                                            <i class="icon_plus text-info add-Admin-Etablissement"
+                                               data-target="#view-admin-etablissement" data-toggle="modal"
+                                               data-id="{{ e.id }}"></i>
+                                        {% endif %}
+                                        <i class="icon_pencil-edit text-primary update-Etablissement"
+                                           data-target="#view-edit-etablissement" data-toggle="modal"
+                                           data-id="{{ e.id }}"></i>
+                                        <a><i class="icon_trash text-danger" data-target="#view-contact"
+                                              data-toggle="modal"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="view-edit-etablissement" class="modal modal-xl fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close contact-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Update Etablissement</h4>
+                        </div>
+                        <div class="modal-body contact-info">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="divider15"></div>
+                                    <div class="contact-follow" id="update-Etablissement-form">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="view-admin-etablissement" class="modal fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close contact-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Ajouter Admin</h4>
+                        </div>
+                        <div class="modal-body contact-info">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="divider15"></div>
+                                    <div class="" id="admin-etablissement-form">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="view-contact" class="modal fade">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close contact-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Contact detail</h4>
+                        </div>
+                        <div class="modal-body contact-info">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="divider15"></div>
+                                    <div class="contact-follow">
+                                        <div class="profile-icon text-xs-center">
+                                            <p>sddssdsdsdssd</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ path('super_admin_etablissement_delete',{'id':1}) }}">
+                                <button type="button" data-toggle="edit" class="btn btn-danger edit-profile edit save-btn">
+                                    Confirmer
+                                </button>
+                            </a>
+                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables/media/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-responsive/js/responsive.bootstrap4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/datatables-scroller/js/dataTables.scroller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/editable-table/mindmup-editabletable.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/editable-table/numeric-input-example.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/datatable.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-left-menu/js/layout.min.js') }}"></script>
+    <script type="text/javascript">
+        $('.update-Etablissement').click(function () {
+            id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: Routing.generate('super_admin_etablissement_update',{'etab':id}),
+                complete: function(data) {
+                    $('#update-Etablissement-form').html(data.responseText);
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(".add-Admin-Etablissement").click(function(){
+            id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: Routing.generate('super_admin_etablissement_admin',{'id':id}),
+                complete: function(data) {
+                    $('#admin-etablissement-form').html(data.responseText);
+                }
+            })
+        });
+    </script>
+{% endblock %}

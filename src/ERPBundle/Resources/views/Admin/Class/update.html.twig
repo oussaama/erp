@@ -1,0 +1,7 @@
+{{ form_start(form,{'action': path('admin_Class_update',{'id':id}),'method':'POST','attr':{'id':'addClass','novalidate':'novalidate'}}) }}
+    {{ form_widget(form) }}
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Update" class="btn btn-primary site-btn pull-right" id="addClassButton"/>
+</div>
+{{ form_end(form) }}

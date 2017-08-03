@@ -1,0 +1,33 @@
+{{ form_start(form,{'action': path('parent_registration'),'method':'POST','attr':{'id':'addParent','novalidate':'novalidate'}}) }}
+    {{ form_row(form.username) }}
+    <span id="parent_username"></span>
+    {{ form_row(form.nomPere) }}
+    <span id="parent_nomPere"></span>
+    {{ form_row(form.cinPere) }}
+    <span id="parent_cinPere"></span>
+    {{ form_row(form.telPere) }}
+    <span id="parent_telPere"></span>
+    {{ form_row(form.professionPere) }}
+    <span id="parent_professionPere"></span>
+    {{ form_row(form.nomMere) }}
+    <span id="parent_nomMere"></span>
+    {{ form_row(form.cinMere) }}
+    <span id="parent_cinMere"></span>
+    {{ form_row(form.telMere) }}
+    <span id="parent_telMere"></span>
+    {{ form_row(form.professionMere) }}
+    <span id="parent_professionMere"></span>
+    {{ form_row(form.email,{ 'attr': {'placeholder': "email"} }) }}
+    <span id="parent_email"></span>
+    {{ form_row(form.plainPassword.first) }}
+    <span id="parent_p1"></span>
+    {{ form_row(form.plainPassword.second) }}
+    <span id="parent_p2"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="ajouter" class="btn btn-primary site-btn pull-right" id="addParentButton"/>
+</div>
+<input type="hidden" value="{{ id }}" name="id"/>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/global/js/global/form/formParent.js') }}"></script>

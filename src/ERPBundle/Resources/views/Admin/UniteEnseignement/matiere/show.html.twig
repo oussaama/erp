@@ -1,0 +1,63 @@
+<div class="col-md-12">
+    <div class="search_block">
+        <h5 class="search_title">Matiere num {{ matiere.id }}</h5>
+        <p>nom : {{ matiere.nom }}</p>
+        <p>Coefession : {{ matiere.coef }}</p>
+        <p>credit : {{ matiere.credit }}</p>
+        <p>TD: {{ matiere.td }}</p>
+        <p>TP : {{ matiere.tp }}</p>
+        <p>Cour : {{ matiere.cours }}</p>
+        <p>date d'ajoute : {{ matiere.dateAjoute|date('M d Y H:i') }}</p>
+        <p>date de Modification : {{ matiere.dateModif|date('M d Y H:i') }}</p>
+        <a href="{{ path('admin_Matiere_update',{'id':matiere.id}) }}"><button class="btn btn-outline-warning btn-xs">Update</button></a>
+        <button class="btn btn-outline-danger btn-xs delete-Matiere" data-target="#view-matiere-delete" data-toggle="modal" data-id="{{ matiere.id }}" >Delete</button>
+    </div>
+</div>
+
+<div id="view-matiere-update" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close contact-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Update Matiere</h4>
+            </div>
+            <div class="modal-body contact-info">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="divider15"></div>
+                        <div class="contact-follow" id="update-matiere-form">
+                            <div class="profile-icon text-xs-center">
+                                sdsdsdsdsdsd
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary edit-profile edit save-btn desactiv">Confirmer</button>
+                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.desactivt').click(function () {
+        id = $(this).data('id');
+        $('.desactiv').click(function () {
+            $.ajax({
+                url: Routing.generate('admin_Matiere_delete', {'id': id}),
+                success: function (result) {
+                    console.log(result);
+                    window.location.href = "http://localhost/erp/web/app_dev.php/admin/unite/index";
+                },
+                failed: function (a) {
+                    console.log(a);
+                }
+            });
+        });
+    });
+</script>

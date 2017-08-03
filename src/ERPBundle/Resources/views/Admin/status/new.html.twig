@@ -1,0 +1,8 @@
+{{ form_start(form,{'action': path('admin_status_new'),'method':'POST','attr':{'id':'addClass','novalidate':'novalidate'}}) }}
+    {{ form_widget(form) }}
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="ajouter" class="btn btn-primary site-btn pull-right" id="addClassButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

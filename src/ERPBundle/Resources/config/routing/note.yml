@@ -1,0 +1,29 @@
+note_index:
+    path:     /
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:index }
+    methods:  GET
+
+note_show:
+    path:     /{id}/show
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:show }
+    methods:  GET
+
+note_new:
+    path:     /new
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:new }
+    methods:  [GET, POST]
+
+note_edit:
+    path:     /{id}/edit
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:edit }
+    methods:  [GET, POST]
+
+note_delete:
+    path:     /{id}/delete
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:delete }
+    methods:  DELETE
+
+note_pdf:
+    path:     /pdf
+    defaults: { _controller: ERPBundle:Front/Enseignant/Note:pdf }
+    methods:  [GET, POST]

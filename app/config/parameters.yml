@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: erp
+    database_user: root
+    database_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: akroutiioussama@gmail.com
+    mailer_password: 00000000ok
+    secret: DSHJLREYQF98321BN23B1100F

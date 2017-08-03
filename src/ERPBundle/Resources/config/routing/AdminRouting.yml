@@ -1,0 +1,97 @@
+admin_header:
+    path:     /header
+    defaults: { _controller: ERPBundle:SuperAdmin/SuperAdmin:header }
+
+admin_homepage:
+    path:     /
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminRedirection }
+
+admin_profil:
+    path:     /profile
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminProfil }
+
+admin_agenda:
+    path:     /agenda
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminAgenda }
+
+admin_notification:
+    path:     /notification
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminNotification }
+
+admin_mailBox:
+    path:     /mail/{type}
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminMailBox }
+
+admin_mailBox_send:
+    path:     /send
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminMailBoxSend }
+
+admin_mailBox_Detail:
+    path:     /mail/detail/{id}
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminMailBoxDetail }
+
+admin_parametrage:
+    path:     /parametrage
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminParametrage }
+
+admin_rapport:
+    path:     /rapport
+    defaults: { _controller: ERPBundle:Admin/Admin:rapport }
+
+admin_verification_username:
+    path:     /username/{username}
+    defaults: { _controller: ERPBundle:Admin/Admin:username }
+    options:
+        expose: true
+admin_verification_cin:
+    path:     /cin/{cin}
+    defaults: { _controller: ERPBundle:Admin/Admin:cin }
+    options:
+        expose: true
+admin_verification_cin:
+    path:     /email/{email}
+    defaults: { _controller: ERPBundle:Admin/Admin:email }
+    options:
+        expose: true
+admin_homepage:
+    path:     /index
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminParametrage }
+methode_paiment:
+    path:     /mode/{id}
+    defaults: { _controller: ERPBundle:Admin/Admin:MethodePayement }
+    options:
+        expose: true
+
+admin_membre:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminMembreRouting.yml"
+    prefix:   /
+admin_class:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminClassRouting.yml"
+    prefix:   /class
+admin_unite:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminUniteRouting.yml"
+    prefix:   /unite
+admin_retard:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminRetardRouting.yml"
+    prefix:   /retard
+admin_appsense:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminAppsenseRouting.yml"
+    prefix:   /appsense
+admin_scolarite:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminScolariteRouting.yml"
+    prefix:   /scolarite
+admin_payment:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminPaymentRouting.yml"
+    prefix:   /paiement
+admin_status:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminStatusRouting.yml"
+    prefix:   /status
+admin_type:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminTypeRouting.yml"
+    prefix:   /type
+admin_slice:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminSliceRouting.yml"
+    prefix:   /slice
+admin_Examen:
+    resource: "@ERPBundle/Resources/config/routing/admin/AdminExamenRouting.yml"
+    prefix:   /examen

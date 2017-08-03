@@ -1,0 +1,13 @@
+{{ form_start(form,{'action': path('admin_Annee_update',{'id':id}),'method':'POST','attr':{'id':'addAnnee','novalidate':'novalidate'}}) }}
+    {{ form_row(form.annee) }}
+<span id="annee_annee"></span>
+{{ form_row(form.debut) }}
+<span id="annee_debut"></span>
+{{ form_row(form.fin) }}
+<span id="annee_dfin"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="Ajouter" class="btn btn-primary site-btn pull-right" id="addEmployeeButton"/>
+</div>
+<input type="hidden" value="{{ app.user.etablissement.id }}" name="id"/>
+{{ form_end(form) }}

@@ -1,0 +1,113 @@
+#Filiere
+admin_Filiere_index:
+    path:     /filiere/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:filiere }
+admin_Filiere_add:
+    path:     /filiere/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addFiliere }
+    options:
+        expose: true
+admin_Filiere_update:
+    path:     /filiere/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateFiliere }
+    options:
+        expose: true
+
+#Diplome
+admin_Diplome_index:
+    path:     /diplome/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:diplome }
+admin_Diplome_add:
+    path:     /diplome/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addDiplome }
+    options:
+        expose: true
+admin_Diplome_update:
+    path:     /diplome/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateDiplome }
+    options:
+        expose: true
+
+#Niveau
+admin_Niveau_index:
+    path:     /niveau/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:niveau }
+admin_Niveau_add:
+    path:     /niveau/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addNiveau }
+    options:
+        expose: true
+admin_Niveau_update:
+    path:     /niveau/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateNiveau }
+    options:
+        expose: true
+
+#Annee
+admin_Annee_index:
+    path:     /annee/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:annee }
+admin_Annee_add:
+    path:     /annee/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addAnnee }
+    options:
+        expose: true
+admin_Annee_update:
+    path:     /annee/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateAnnee }
+    options:
+        expose: true
+
+#Specialite
+admin_Specialite_index:
+    path:     /specialite/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:specialite }
+admin_Specialite_add:
+    path:     /specialite/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addSpecialite }
+    options:
+        expose: true
+admin_Specialite_update:
+    path:     /specialite/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateSpecialite }
+    options:
+        expose: true
+admin_Specialite_delete:
+    path:     /specialite/supprimer/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:deleteSpecialite }
+    options:
+        expose: true
+admin_Specialite_unite_add:
+    path:     /specialite/unite/add/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:specialiteUniteAdd }
+admin_unite_add:
+    path:     /specialite/unite/add/{id}/{spec}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addUniteSpecialite }
+admin_Specialite_unite_update:
+    path:     /specialite/unite/update/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:specialiteUniteUpdate }
+admin_unite_update:
+    path:     /specialite/unite/update/{id}/{spec}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:updateUniteSpecialite }
+    options:
+          expose: true
+
+#emploi de temps
+admin_Emploi_index:
+    path:     /emploi/index
+    defaults: { _controller: ERPBundle:Admin/Scolarite:emploi }
+admin_Emploi_add:
+    path:     /emploi/add
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addEmploi }
+    options:
+        expose: true
+admin_Emploi_Enseignant_add:
+    path:     /emploi/add/enseignant
+    defaults: { _controller: ERPBundle:Admin/Scolarite:addEmploiEnseignant }
+    options:
+        expose: true
+admin_Emploi_delete:
+    path:     /emploi/supprimer/{id}
+    defaults: { _controller: ERPBundle:Admin/Scolarite:deleteEmploi }
+    options:
+        expose: true

@@ -1,0 +1,59 @@
+erp_homepage:
+    path:     /
+    defaults: { _controller: ERPBundle:Default:index }
+
+pageNotFound:
+    path:  /404
+    defaults: { _controller: ERPBundle:PageNotFound:pageNotFound }
+    requirements:
+
+erp_super_admin:
+    resource: "@ERPBundle/Resources/config/routing/superAdminRouting.yml"
+    prefix:   /backend
+
+erp_admin:
+    resource: "@ERPBundle/Resources/config/routing/AdminRouting.yml"
+    prefix:   /admin
+
+erp_front:
+    resource: "@ERPBundle/Resources/config/routing/FrontRouting.yml"
+    prefix:   /
+
+verification_username:
+    path:     /username/{username}
+    defaults: { _controller: ERPBundle:Default:username }
+    options:
+        expose: true
+verification_cin:
+    path:     /cin/{cin}
+    defaults: { _controller: ERPBundle:Default:cin }
+    options:
+        expose: true
+verification_email:
+    path:     /email/{email}
+    defaults: { _controller: ERPBundle:Default:email }
+    options:
+        expose: true
+erp_note:
+        resource: "@ERPBundle/Resources/config/routing/note.yml"
+        prefix:   /note
+
+erp_examen:
+        resource: "@ERPBundle/Resources/config/routing/examen.yml"
+        prefix:   /examen
+
+erp_appsense:
+        resource: "@ERPBundle/Resources/config/routing/appsense.yml"
+        prefix:   /appsense
+
+erp_cour:
+        resource: "@ERPBundle/Resources/config/routing/cour.yml"
+        prefix:   /cour
+
+erp_semestre:
+        resource: "@ERPBundle/Resources/config/routing/semestre.yml"
+        prefix:   /semestre
+
+erp_session:
+        resource: "@ERPBundle/Resources/config/routing/session.yml"
+        prefix:   /session

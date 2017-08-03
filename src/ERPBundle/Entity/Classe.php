@@ -1,0 +1,441 @@
+<?php
+
+namespace ERPBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class
+ *
+ * @ORM\Table(name="classe")
+ * @ORM\Entity(repositoryClass="ERPBundle\Repository\ClasseRepository")
+ */
+class Classe
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomClass", type="string", length=255)
+     */
+    private $nomClass;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etablissement", inversedBy="classe")
+     * @ORM\JoinColumn(name="etablissment", referencedColumnName="id")
+     */
+    private $etablissment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Specialite", inversedBy="classe")
+     * @ORM\JoinColumn(name="specialite", referencedColumnName="id")
+     */
+    private $specialite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Annee", inversedBy="classe")
+     * @ORM\JoinColumn(name="annee", referencedColumnName="id")
+     */
+    private $annee;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Emploi", mappedBy="Classe")
+     */
+    private $emploi;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjoute", type="datetime")
+     */
+    private $dateAjoute;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateModif", type="datetime", length=255)
+     */
+    private $dateModif;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean",options={"default" = 1})
+     */
+    private $enabled;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Etudiant", mappedBy="classe")
+     */
+    private $etudiant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Niveau", inversedBy="classe")
+     * @ORM\JoinColumn(name="niveau", referencedColumnName="id")
+     */
+    private $niveau;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cour", mappedBy="classe")
+     */
+    private $cour;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Examen", mappedBy="classe")
+     */
+    private $examen;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomClass
+     *
+     * @param string $nomClass
+     *
+     * @return Class
+     */
+    public function setNomClass($nomClass)
+    {
+        $this->nomClass = $nomClass;
+
+        return $this;
+    }
+
+    /**
+     * Get nomClass
+     *
+     * @return string
+     */
+    public function getNomClass()
+    {
+        return $this->nomClass;
+    }
+
+    /**
+     * Set annee
+     *
+     * @param integer $annee
+     *
+     * @return Class
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return int
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+
+    /**
+     * Set dateAjoute
+     *
+     * @param \DateTime $dateAjoute
+     *
+     * @return Class
+     */
+    public function setDateAjoute($dateAjoute)
+    {
+        $this->dateAjoute = $dateAjoute;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAjoute
+     *
+     * @return \DateTime
+     */
+    public function getDateAjoute()
+    {
+        return $this->dateAjoute;
+    }
+
+    /**
+     * Set dateModif
+     *
+     * @param \DateTime $dateModif
+     *
+     * @return Class
+     */
+    public function setDateModif($dateModif)
+    {
+        $this->dateModif = $dateModif;
+
+        return $this;
+    }
+
+    /**
+     * Get dateModif
+     *
+     * @return \DateTime
+     */
+    public function getDateModif()
+    {
+        return $this->dateModif;
+    }
+
+    /**
+     * Set etablissment
+     *
+     * @param \ERPBundle\Entity\Etablissement $etablissment
+     *
+     * @return Classe
+     */
+    public function setEtablissment(\ERPBundle\Entity\Etablissement $etablissment = null)
+    {
+        $this->etablissment = $etablissment;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissment
+     *
+     * @return \ERPBundle\Entity\Etablissement
+     */
+    public function getEtablissment()
+    {
+        return $this->etablissment;
+    }
+
+    /**
+     * Set specialite
+     *
+     * @param \ERPBundle\Entity\Specialite $specialite
+     *
+     * @return Classe
+     */
+    public function setSpecialite(\ERPBundle\Entity\Specialite $specialite = null)
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * Get specialite
+     *
+     * @return \ERPBundle\Entity\Specialite
+     */
+    public function getSpecialite()
+    {
+        return $this->specialite;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Classe
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiant = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add etudiant
+     *
+     * @param \ERPBundle\Entity\Etudiant $etudiant
+     *
+     * @return Classe
+     */
+    public function addEtudiant(\ERPBundle\Entity\Etudiant $etudiant)
+    {
+        $this->etudiant[] = $etudiant;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiant
+     *
+     * @param \ERPBundle\Entity\Etudiant $etudiant
+     */
+    public function removeEtudiant(\ERPBundle\Entity\Etudiant $etudiant)
+    {
+        $this->etudiant->removeElement($etudiant);
+    }
+
+    /**
+     * Get etudiant
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \ERPBundle\Entity\Niveau $niveau
+     *
+     * @return Classe
+     */
+    public function setNiveau(\ERPBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \ERPBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * Add cour
+     *
+     * @param \ERPBundle\Entity\Cour $cour
+     *
+     * @return Classe
+     */
+    public function addCour(\ERPBundle\Entity\Cour $cour)
+    {
+        $this->cour[] = $cour;
+
+        return $this;
+    }
+
+    /**
+     * Remove cour
+     *
+     * @param \ERPBundle\Entity\Cour $cour
+     */
+    public function removeCour(\ERPBundle\Entity\Cour $cour)
+    {
+        $this->cour->removeElement($cour);
+    }
+
+    /**
+     * Get cour
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCour()
+    {
+        return $this->cour;
+    }
+
+    /**
+     * Add examan
+     *
+     * @param \ERPBundle\Entity\Examen $examan
+     *
+     * @return Classe
+     */
+    public function addExaman(\ERPBundle\Entity\Examen $examan)
+    {
+        $this->examen[] = $examan;
+
+        return $this;
+    }
+
+    /**
+     * Remove examan
+     *
+     * @param \ERPBundle\Entity\Examen $examan
+     */
+    public function removeExaman(\ERPBundle\Entity\Examen $examan)
+    {
+        $this->examen->removeElement($examan);
+    }
+
+    /**
+     * Get examen
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExamen()
+    {
+        return $this->examen;
+    }
+
+    /**
+     * Add emploi
+     *
+     * @param \ERPBundle\Entity\Emploi $emploi
+     *
+     * @return Classe
+     */
+    public function addEmploi(\ERPBundle\Entity\Emploi $emploi)
+    {
+        $this->emploi[] = $emploi;
+
+        return $this;
+    }
+
+    /**
+     * Remove emploi
+     *
+     * @param \ERPBundle\Entity\Emploi $emploi
+     */
+    public function removeEmploi(\ERPBundle\Entity\Emploi $emploi)
+    {
+        $this->emploi->removeElement($emploi);
+    }
+
+    /**
+     * Get emploi
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmploi()
+    {
+        return $this->emploi;
+    }
+}

@@ -1,0 +1,27 @@
+{{ form_start(form,{'action': path('super_admin_client_add'),'method':'POST','attr':{'id':'addClient','novalidate':'novalidate'}}) }}
+<script>
+    {{ form_jquery_validation(form) }}
+</script>
+    {{ form_row(form.fullName) }}
+    <span id="client_fullName"></span>
+    {{ form_row(form.cin) }}
+    <span id="client_cin"></span>
+    {{ form_row(form.tel) }}
+    <span id="client_tel"></span>
+    {{ form_row(form.mail) }}
+    <span id="client_mail"></span>
+    {{ form_row(form.adresse) }}
+
+    {{ form_row(form.cp) }}
+    <span id="client_cp"></span>
+    {{ form_row(form.ville) }}
+    <span id="client_ville"></span>
+    {{ form_row(form.pays) }}
+    <span id="client_pays"></span>
+<div class="divider15"></div>
+<div>
+    <input type="submit" value="ajouter" class="btn btn-primary site-btn pull-right" id="addClientButton"/>
+</div>
+{{ form_end(form) }}
+<script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/global/js/global/form/formClient.js') }}"></script>

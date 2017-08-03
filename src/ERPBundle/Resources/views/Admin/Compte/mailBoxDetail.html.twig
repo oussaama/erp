@@ -1,0 +1,371 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Admin - MailBox Detail{% endblock %}
+{% block stylesheets %}
+    <script type="text/javascript">
+        //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-92643213-2']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        (function (b) {
+            (function (a) {
+                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
+            })(function () {
+                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "like", a])
+                }), FB.Event.subscribe("edge.remove", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
+                }), FB.Event.subscribe("message.send", function (a) {
+                    _gaq.push(["_trackSocial", "facebook", "send", a])
+                }));
+                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function (a) {
+                    if (a) {
+                        var b;
+                        if (a.target && a.target.nodeName == "IFRAME")a:{
+                            if (a = a.target.src) {
+                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
+                                b = 0;
+                                for (var c; c = a[b]; ++b)if (c.indexOf("url") === 0) {
+                                    b = unescape(c.split("=")[1]);
+                                    break a
+                                }
+                            }
+                            b = void 0
+                        }
+                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
+                    }
+                })
+            })
+        })(window);//]]>
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        try {
+            if (!window.CloudFlare) {
+                var CloudFlare = [{
+                    verbose: 0,
+                    p: 0,
+                    byc: 0,
+                    owlid: "cf",
+                    bag2: 1,
+                    mirage2: 0,
+                    oracle: 0,
+                    paths: {cloudflare: "/cdn-cgi/nexp/dok3v=1613a3a185/"},
+                    atok: "82f71ab91e52e9dc6f8d10c6ee544add",
+                    petok: "07d9b5c669a4fa4a06776c98721e4d32cea870c5-1497805119-1800",
+                    zone: "themesadmin.com",
+                    rocket: "0",
+                    apps: {"ga_key": {"ua": "UA-92643213-2", "ga_bs": "2"}}
+                }];
+                !function (a, b) {
+                    a = document.createElement("script"), b = document.getElementsByTagName("script")[0], a.async = !0, a.src = "../../ajax.cloudflare.com/cdn-cgi/nexp/dok3v%3d85b614c0f6/cloudflare.min.js", b.parentNode.insertBefore(a, b)
+                }()
+            }
+        } catch (e) {
+
+        }
+        ;
+        //]]>
+    </script>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/Waves/dist/waves.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/icons_fonts/elegant_font/elegant.min.css') }}"/>
+    <link id="site-color" rel="stylesheet" href="{{ asset('assets/layouts/layout-icon-menu/css/color/light/color-default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/switchery/dist/switchery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/plugins/simplemde/dist/simplemde.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/layouts/layout-icon-menu/css/layout.min.css') }}"/>
+    <style>
+        #sidebar {
+            margin-top: -4px;
+        }
+
+        .menu-paiment:hover {
+            background: #087380 !important;
+        }
+        .input-form {
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+{% block secondMenu %}
+    <div id="header-icon">
+        <div class="header-width">
+            <div class="col-xl-12">
+                <div class="menucontainer">
+                    <div class="overlapblackbg"></div>
+                    <a id="navtoggle" class="animated-arrow"><span></span></a>
+                    <nav id="nav" class="topmenu" role="navigation">
+                        <ul class="menu-list live-search-list">
+                            <li style="background:#087380;">
+                                <a href="{{ path('admin_mailBox',{'type':'recu'}) }}">
+                                    <span class="icon_mail header-icon" aria-hidden="true" style="color: #fff;"></span>
+                                    <span style="color:white">Messsagerie</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_notification') }}">
+                                    <span class="icon_info header-icon" aria-hidden="true"></span>
+                                    <span>Notification</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="#">
+                                    <span class="icon_toolbox header-icon" aria-hidden="true"></span>
+                                    <span>Evenement</span>
+                                </a>
+                            </li>
+                            <li class="menu-paiment">
+                                <a href="{{ path('admin_agenda') }}">
+                                    <span class="icon_calendar header-icon" aria-hidden="true" ></span>
+                                    <span>Agenda</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+    <section id="content-wrapper">
+        <div class="site-content-title">
+            <h2 class="float-xs-left content-title-main">Mailbox</h2>
+
+            <ol class="breadcrumb float-xs-right">
+                <li class="breadcrumb-item">
+                    <span class="fs1" aria-hidden="true" data-icon=""></span>
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">Mailbox</a></li>
+                <li class="breadcrumb-item active">mail</li>
+            </ol>
+
+        </div>
+
+        <div class="mailbox_main">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="content">
+                    <div class="mailbox-header">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="inbox-left float-xs-left">
+                                    <img alt="Profile image" src="{{ asset('assets/global/image/user.jpg') }}">
+                                </div>
+                                <div class="right-mailbox float-xs-left">
+                                    <h3>Miler Hussey</h3>
+                                    <h4>Mailbox</h4>
+                                </div>
+                            </div>
+                            <div class="col-xl-8">
+                                <form action="#" class="mail_search float-xs-right">
+                                    <div class="input-group">
+                                        <input id="search" type="text" class="form-control" name="search" placeholder="search..">
+                                        <a href="#" class="input-group-addon search_icon"><i class="icon icon_search"></i></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mailbox-contain">
+                        <div class="col-xl-2 col-lg-3 col-md-3 sidebar_block">
+                            <div class="row">
+                                <button aria-controls="collapseExample" aria-expanded="false"
+                                        data-target="#collapseExample" data-toggle="collapse" type="button"
+                                        class="mail-toggle">
+                                    Mailbox <span class="icon arrow_carrot-down float-xs-right"></span>
+                                </button>
+                                <div class="sidebar_contain collapse" id="collapseExample">
+                                    <div class="mail_btn">
+                                        <button type="submit" class="btn btn-primary btn-block mail_compose_btn flat-buttons" id="compose_mail">Compose</button>
+                                    </div>
+                                    <ul class="mailbox_sidebar_contain">
+                                        <li><a href="{{ path('admin_mailBox',{'type':'recu'}) }}" class="flat-buttons"><span class="icon_wallet" aria-hidden="true"></span>Inbox<span class="tag square-tag tag-success"> 42</span></a></li>
+                                        <li><a href="{{ path('admin_mailBox',{'type':'important'}) }}" class="flat-buttons"><span class="icon_mail_alt" aria-hidden="true"></span>Importante</a></li>
+                                        <li><a href="{{ path('admin_mailBox',{'type':'send'}) }}" class="flat-buttons"><span class="icon_cloud-upload_alt" aria-hidden="true"></span>Envoyer<span class="tag square-tag tag-warning"> 20</span></a></li>
+                                        <li><a href="{{ path('admin_mailBox',{'type':'archive'}) }}" class="flat-buttons"><span class="icon_archive_alt" aria-hidden="true"></span>Archive</a></li>
+                                        <li><a href="{{ path('admin_mailBox',{'type':'corbeille'}) }}" class="flat-buttons"><span class="icon_trash_alt" aria-hidden="true"></span>Corbeille</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-9 col-md-9 right-sidebar_block mail_view_block">
+                            <div class="mailbox_right_contain">
+                                <div class="col-xl-12">
+                                    <div class="row">
+                                        <div class="inbox-left float-xs-left">
+                                            <img alt="Profile image" src="{{ asset('assets/global/image/user.jpg') }}">
+                                        </div>
+                                        <div class="mail_view_title">
+                                            <span class="float-xs-left">From :</span><h6>{{ mail.send }}</h6>
+                                            <span class="float-xs-left">Subject :</span>
+                                            <p>{{ mail.objet }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mail_massage">
+                                    <p>Hello Bonnie,</p>
+                                    <p>{{ mail.send }}</p>
+                                    <blockquote class="blockquote">
+                                        <p>{{ mail.message }}</p>
+                                    </blockquote>
+                                </div>
+                                <div class="mail_attachments">
+                                    <i class="icon icon_link_alt float-xs-left"></i>
+                                    <div class="float-xs-left">Attachments <span>(3)</span></div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="gallery-img mail_attachments_img">
+                                                    <img class="view-img" src="{{ asset('assets/global/image/mail-image1.jpg') }}" alt=""/>
+                                                    <div class="gallery-overlay">
+                                                        <div class="gallery-wrapper">
+                                                            <div class="gallery-description">
+                                                                <div class="gallery-icon">
+                                                                    <a href="#"><i class="icon icon_download"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h6>Note with pen</h6>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="gallery-img mail_attachments_img">
+                                                    <img class="view-img" src="{{ asset('assets/global/image/mail-image2.jpg') }}" alt=""/>
+                                                    <div class="gallery-overlay">
+                                                        <div class="gallery-wrapper">
+                                                            <div class="gallery-description">
+                                                                <div class="gallery-icon">
+                                                                    <a href="#"><i
+                                                                                class="icon icon_download"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h6>Laptop with paper</h6>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="gallery-img mail_attachments_img">
+                                                    <img class="view-img" src="{{ asset('assets/global/image/mail-image3.jpg') }}" alt=""/>
+                                                    <div class="gallery-overlay">
+                                                        <div class="gallery-wrapper">
+                                                            <div class="gallery-description">
+                                                                <div class="gallery-icon">
+                                                                    <a href="#"><i
+                                                                                class="icon icon_download"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h6>Lenovo laptop</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mail_reply_button float-xs-left">
+                                    <button type="button" class="btn btn-primary mail_reply_btn flat-buttons" id="mail_reply"><i class="icon fa fa-mail-reply"></i>Reply</button>
+                                    <button type="button" class="btn btn-primary mail_reply_btn flat-buttons" id="mail_forward_btn"><i class="icon fa fa-mail-forward"></i>Forward</button>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <form action="{{ path('admin_mailBox_send') }}" method="POST">
+                                        <div class="reply_main_block">
+                                            <div class="reply_to">
+                                                <span class="float-xs-left">To :</span><h6>{{ mail.send }}</h6>
+                                                <input type="hidden" name ="email" value="{{ mail.send }}"/>
+                                                <input type="hidden" name ="objet" value="{{ mail.objet }}"/>
+                                                </div>
+                                            <div class="reply_massage">
+                                                <textarea id="reply-mail" data-plugin="simplemarkdown" data-spell-checker="false" data-autofocus="true" rows="10" name="message"></textarea>
+                                            </div>
+                                            <div class="reply_bottom">
+                                                <button type="submit" class="btn btn-primary flat-buttons">Send</button>
+                                                <button type="button" class="btn btn-primary flat-buttons" id="mail_reply_cancel">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="forward_block">
+                                        <form action="{{ path('admin_mailBox_send') }}" method="POST">
+                                            <div class="reply_to">
+                                                <span class="float-xs-left">From :</span><input type="text" name="email">
+                                                <input type="hidden" name ="objet" value="{{ mail.objet }}"/>
+                                            </div>
+                                            <div class="reply_massage">
+                                                <textarea id="forward-mail" data-plugin="simplemarkdown" data-spell-checker="false" data-autofocus="true" rows="10" name="message"></textarea>
+                                            </div>
+                                            <div class="reply_bottom">
+                                                <button type="submit" class="btn btn-primary flat-buttons">Send</button>
+                                                <button type="button" class="btn btn-primary flat-buttons" id="mail_forward_cancel">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="mail_compose_main pop">
+                            <div class="content">
+                                <form action="{{ path('admin_mailBox_send') }}" method="POST">
+                                <div class="mail_view_title compose_title">
+                                    <div class="compose-inputbox"><span>To :</span><input type="text" name="email">
+                                        <a href="javascript:void(0)" class="compose_close float-xs-right flat-buttons"><i class="icon icon_close"></i></a>
+                                    </div>
+                                    <div class="compose_inputbox">
+                                        <span>Subject :</span><input type="text" name="subject">
+                                    </div>
+                                </div>
+                                <div class="compose_message">
+                                <textarea id="send-mail" data-height="150" data-plugin="simplemarkdown" data-spell-checker="false"></textarea>
+                                </div>
+                                <div class="compose_btn">
+                                    <button type="submit" class="btn btn-primary flat-buttons">Send</button>
+                                    <input name="file_link[]" id="file_link" multiple="" type="file">
+                                    <label for="file_link" class="btn btn-primary flat-buttons"><i class="icon icon_link_alt"></i></label>
+                                    <a href="javascript:void(0)" class="mail_trash float-xs-right flat-buttons"><i class="icon icon_trash_alt"></i></a>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/tether/dist/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/screenfull.js/dist/screenfull.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/Waves/dist/waves.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/classie/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/simplemde/dist/simplemde.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/plugins/CodeMirror-v1/js/codemirror.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/site-settings.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/global/js/global/mail.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/layout-icon-menu/js/layout.min.js') }}"></script>
+    <script>$('communication').addClass('active');</script>
+{% endblock %}
