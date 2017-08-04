@@ -20,8 +20,9 @@ class AdminController extends Controller
         return $this->render('::headers/headerAdmin.html.twig');
     }
 
-    public function AdminRedirectionAction(){
-    $em = $this->getDoctrine()->getManager();
+    public function AdminRedirectionAction()
+    {
+        $em = $this->getDoctrine()->getManager();
         $etudiants_all = $em->getRepository('ERPBundle:Etudiant')->findAll();
         $result = count($etudiants_all);
         $contacts_all = $em->getRepository('ERPBundle:Contact')->findAll();
@@ -38,9 +39,9 @@ class AdminController extends Controller
         $employes_all = $em->getRepository('ERPBundle:Classe')->findAll();
         $result7 = count($employes_all);
 
-        return $this->render('ERPBundle:Admin:index.html.twig', array(
-            'result'=>$result,'result2'=>$result2,'result3'=>$result3,'result4'=>$result4,'result5'=>$result5, 'result6'=>$result6, 'result7'=>$result7
-        ));
+        $result8 = count($this->verifierTrancheEtudiant());
+
+        return $this->render('ERPBundle:Admin:index.html.twig', array('result' => $result, 'result2' => $result2, 'result3' => $result3, 'result4' => $result4, 'result5' => $result5, 'result6' => $result6, 'result7' => $result7,'result8'=>$result8));
     }
 
     public function AdminProfilAction()
@@ -52,40 +53,44 @@ class AdminController extends Controller
     {
         return $this->render('ERPBundle:Admin/Compte:agenda.html.twig');
     }
-    public function insertParameter($i,$p1,$meth,$request,$user,$objet,$array){
-        if($request->get($p1.$user.$i)==null){
-            $objet->$meth(array_push($array,("0")));
-        }else if($request->get($p1.$user.$i)=="on"){
-            $objet->$meth(array_push($array,("1")));
+
+    public function insertParameter($i, $p1, $meth, $request, $user, $objet, $array)
+    {
+        if ($request->get($p1 . $user . $i) == null) {
+            $objet->$meth(array_push($array, ("0")));
+        } else if ($request->get($p1 . $user . $i) == "on") {
+            $objet->$meth(array_push($array, ("1")));
         }
     }
 
-    private function selectPermission($p1,$meth,$request,$user,$objet){
+    private function selectPermission($p1, $meth, $request, $user, $objet)
+    {
         $array[] = array();
-        for ($i=1;$i<5;$i++){
-            $this->insertParameter($i,$p1,$meth,$request,$user,$objet,$array);
+        for ($i = 1; $i < 5; $i++) {
+            $this->insertParameter($i, $p1, $meth, $request, $user, $objet, $array);
         }
     }
-    public function AdminParametrageAction(Request $request,$user=null)
+
+    public function AdminParametrageAction(Request $request, $user = null)
     {
-        if($request->getMethod()=="POST"){
+        if ($request->getMethod() == "POST") {
             $em = $this->getDoctrine()->getManager();
-            $u ="";
+            $u = "";
             $param = new Parameter();
-            if($user = "enseignant"){
+            if ($user = "enseignant") {
                 $u = "e";
                 $param->setUtilisateur("enseignant");
-            }else if($user = "etudiant"){
+            } else if ($user = "etudiant") {
                 $u = "et";
                 $param->setUtilisateur("etudiant");
-            }else if($user = "employee"){
+            } else if ($user = "employee") {
                 $u = "ee";
                 $param->setUtilisateur("employee");
             }
-            $this->selectPermission("c","setClasse",$request,$u,$param);
+            $this->selectPermission("c", "setClasse", $request, $u, $param);
             $param->setEtablissement($this->getUser()->getEtablissement());
             $parama = $em->getRepository("ERPBundle:Parameter")->findOneBy(array('Etablissement' => $this->getUser()->getEtablissement(), 'utilisateur' => $user));
-            if ($parama == null){
+            if ($parama == null) {
                 $em->persist($param);
             }
             $em->flush();
@@ -99,20 +104,26 @@ class AdminController extends Controller
         $mail = "";
         switch ($type) {
             case "send" :
-                $mail = $em->getRepository("ERPBundle:Contact")->findBySend($this->getUser()->getEmail());break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findBySend($this->getUser()->getEmail());
+                break;
             case "recu":
-                $mail = $em->getRepository("ERPBundle:Contact")->findByRecu($this->getUser()->getEmail());break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findByRecu($this->getUser()->getEmail());
+                break;
             case "corbeille"   :
-                $mail = $em->getRepository("ERPBundle:Contact")->findByCorbeille(1);break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findByCorbeille(1);
+                break;
             case "important" :
-                $mail = $em->getRepository("ERPBundle:Contact")->findByImportant(1);break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findByImportant(1);
+                break;
             case "archive" :
-                $mail = $em->getRepository("ERPBundle:Contact")->findByArchive(1);break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findByArchive(1);
+                break;
             case "unread" :
-                $mail = $em->getRepository("ERPBundle:Contact")->findByEtat(0);break;
+                $mail = $em->getRepository("ERPBundle:Contact")->findByEtat(0);
+                break;
         }
         //$paginator = $this->get('knp_paginator');
-       // $pagination = $paginator->paginate($mail, sizeof($mail), 10);
+        // $pagination = $paginator->paginate($mail, sizeof($mail), 10);
         return $this->render('ERPBundle:Admin/Compte:mailBox.html.twig', array('mail' => $mail, 'type' => $type));
     }
 
@@ -145,14 +156,14 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $mail = $em->getRepository("ERPBundle:Contact")->findOneById($id);
-        return $this->render('ERPBundle:Admin/Compte:mailBoxDetail.html.twig',array('mail'=>$mail));
+        return $this->render('ERPBundle:Admin/Compte:mailBoxDetail.html.twig', array('mail' => $mail));
     }
 
     public function AdminNotificationAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $notification = $em->getRepository('ERPBundle:Notification')->findBy(array('user'=>$this->getUser()->getId()));
-        return $this->render('ERPBundle:Admin/Compte:notification.html.twig',array('notification'=>$notification));
+        $notification = $em->getRepository('ERPBundle:Notification')->findBy(array('user' => $this->getUser()->getId()));
+        return $this->render('ERPBundle:Admin/Compte:notification.html.twig', array('notification' => $notification));
     }
 
     public function usernameAction($username)
@@ -182,16 +193,45 @@ class AdminController extends Controller
         return $response;
     }
 
-    public function rapportAction(){
+    public function rapportAction()
+    {
         return $this->render('ERPBundle:Admin/Compte:rapport.html.twig');
     }
 
-    public function MethodePayementAction($id){
+    public function MethodePayementAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
-        $methode= $em->getRepository('ERPBundle:Status')->findOneById($id);
+        $methode = $em->getRepository('ERPBundle:Status')->findOneById($id);
         $response = new Response(json_encode(array('methode' => $methode->getType())));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
 
+    }
+    private function verifierTrancheEtudiant(){
+        $em = $this->getDoctrine()->getManager();
+        $tranches = array();
+        $etudiants = $em->getRepository("ERPBundle:Etudiant")->findBy(array('Etablissement' => $this->getUser()->getEtablissement()));
+        $date = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d") + 10, date("Y")));
+        foreach ($etudiants as $e) {
+            $tranche = $em->getRepository('ERPBundle:Slice')->findOneBy(array('etudiant' => $e, 'state' => 'en attente', 'dateFin' => $date));
+            if ($tranche != null) {
+                array_push($tranches, $tranche);
+            }
+        }
+        return $tranches;
+    }
+
+    public function AdminPaimentAction()
+    {
+        $tranches = $this->verifierTrancheEtudiant();
+        foreach($tranches as $t) {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('paiment')
+                ->setFrom('akroutiioussama@gmail.com')
+                ->setTo($t->getEtudiant()->getEmail())
+                ->setBody($this->renderView('ERPBundle:Admin/Compte:mailPaiment.html.twig', array('tranche' => $t)), 'text/html');
+            $this->get('mailer')->send($message);
+        }
+        return $this->redirect($this->generateUrl('admin_homepage'));
     }
 }

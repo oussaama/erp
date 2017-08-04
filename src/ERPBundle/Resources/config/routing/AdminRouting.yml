@@ -61,6 +61,9 @@ methode_paiment:
     defaults: { _controller: ERPBundle:Admin/Admin:MethodePayement }
     options:
         expose: true
+admin_verifier_paiment:
+    path:     /paiment
+    defaults: { _controller: ERPBundle:Admin/Admin:AdminPaiment }
 
 admin_membre:
     resource: "@ERPBundle/Resources/config/routing/admin/AdminMembreRouting.yml"
