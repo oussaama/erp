@@ -24,56 +24,51 @@ class Appsense
     /**
      * @var boolean
      *
-     * @ORM\Column(name="tp", type="boolean")
+     * @ORM\Column(name="tp", type="boolean",nullable=true)
      */
     private $tp;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="td", type="boolean")
+     * @ORM\Column(name="td", type="boolean",nullable=true)
      */
     private $td;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="cour", type="boolean")
+     * @ORM\Column(name="cour", type="boolean",nullable=true)
      */
     private $cour;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="retard", type="boolean")
+     * @ORM\Column(name="retard", type="boolean",nullable=true)
      */
     private $retard;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="present", type="boolean")
+     * @ORM\Column(name="present", type="boolean",nullable=true)
      */
     private $present;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="absent", type="boolean")
+     * @ORM\Column(name="absent", type="boolean",nullable=true)
      */
     private $absent;
+
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateAppsense", type="datetime")
+     * @ORM\Column(name="dateAppsense", type="string",nullable=true)
      */
     private $dateAppsense;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateFinAppsense", type="datetime")
-     */
-    private $dateFinAppsense;
 
     /**
      * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="appsense")
@@ -322,4 +317,34 @@ class Appsense
         $this->absent = $absent;
     }
 
+
+    /**
+     * Get tp
+     *
+     * @return boolean
+     */
+    public function getTp()
+    {
+        return $this->tp;
+    }
+
+    /**
+     * Get td
+     *
+     * @return boolean
+     */
+    public function getTd()
+    {
+        return $this->td;
+    }
+
+    /**
+     * Get cour
+     *
+     * @return boolean
+     */
+    public function getCour()
+    {
+        return $this->cour;
+    }
 }

@@ -183,6 +183,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="basic_table table-responsive">
+                                    <form action="{{path('absent_add',{'classe':id}) }}" method="post">
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -194,68 +195,67 @@
                                             <th>Date</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
                                         {% for e in etudiant %}
-                                            <td>{{ e.nom }} {{ e.prenom }}</td>
-                                            <td>
-                                                <div class="checkbox-squared">
-                                                    <input value="None" id="checkbox-squared1" name="vertical"
-                                                           type="checkbox" checked="">
-                                                    <label for="checkbox-squared1"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="checkbox-squared">
-                                                    <input value="None" id="checkbox-squared2" name="vertical"
-                                                           type="checkbox" checked="">
-                                                    <label for="checkbox-squared2"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="checkbox-squared">
-                                                    <input value="None" id="checkbox-squared3" name="vertical"
-                                                           type="checkbox" checked="">
-                                                    <label for="checkbox-squared3"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="radio-inline">
-                                                    <div class="radio-button">
-                                                        <input value="None" id="radio-button1" name="radio" type="radio"
-                                                               checked="">
-                                                        <label for="radio-button1"></label>
-                                                        <span>Present</span>
+                                            <tbody>
+                                                <td>{{ e.nom }} {{ e.prenom }}</td>
+                                                <td>
+                                                    <div class="checkbox-squared">
+                                                        <input value="None" id="tp{{ e.id }}" name="tp{{ e.id }}"
+                                                               type="checkbox">
+                                                        <label for="tp{{ e.id }}"></label>
                                                     </div>
-                                                    <div class="radio-button">
-                                                        <input value="None" id="radio-button2" name="radio"
-                                                               type="radio">
-                                                        <label for="radio-button2"></label>
-                                                        <span>Retard</span>
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox-squared">
+                                                        <input value="None" id="td{{ e.id }}" name="td{{ e.id }}"
+                                                               type="checkbox">
+                                                        <label for="td{{ e.id }}"></label>
                                                     </div>
-                                                    <div class="radio-button">
-                                                        <input value="None" id="radio-button3" name="radio"
-                                                               type="radio">
-                                                        <label for="radio-button3"></label>
-                                                        <span>Absent</span>
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox-squared">
+                                                        <input value="None" id="co{{ e.id }}" name="co{{ e.id }}"
+                                                               type="checkbox">
+                                                        <label for="co{{ e.id }}"></label>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>
+                                                </td>
+                                                <td>
+                                                    <div class="radio-inline">
+                                                        <div class="radio-button">
+                                                            <input value="None" id="r1{{ e.id }}" name="r1{{ e.id }}"
+                                                                   type="radio">
+                                                            <label for="r1{{ e.id }}"></label>
+                                                            <span>Present</span>
+                                                        </div>
+                                                        <div class="radio-button">
+                                                            <input value="None" id="r2{{ e.id }}" name="r2{{ e.id }}"
+                                                                   type="radio">
+                                                            <label for="r2{{ e.id }}"></label>
+                                                            <span>Retard</span>
+                                                        </div>
+                                                        <div class="radio-button">
+                                                            <input value="None" id="r3{{ e.id }}" name="r3{{ e.id }}" type="radio">
+                                                            <label for="r3{{ e.id }}"></label>
+                                                            <span>Absent</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
 
-                                                <div class="form-group">
-                                                    <div class="input-group date" data-plugin="flatpickr" data-enable-time="true" data-wrap="true">
-                                                        <input type="text" class="form-control flatpickr-input  " data-input=""  >
-                                                        <span class="input-group-addon date-icon" data-toggle="">
-<i class="icon icon_calendar"></i>
-</span>
+                                                    <div class="form-group">
+                                                        <div class="input-group date" data-plugin="flatpickr"
+                                                             data-enable-time="true" data-wrap="true">
+                                                            <input type="text" class="form-control flatpickr-input" data-input="" id="date{{ e.id }}" name="date{{ e.id }}">
+                                                            <span class="input-group-addon date-icon" data-toggle=""><i class="icon icon_calendar"></i></span>
+                                                        </div>
                                                     </div>
-                                                </div>
-
-
-                                            </td>
+                                                </td>
+                                                <input type="hidden" value="{{ app.user.id }}" name="id"/>
+                                            </tbody>
                                         {% endfor %}
-                                        </tbody>
                                     </table>
+                                        <button type="submit" class="btn btn-xs btn-primary pull-right">Enregistrer</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

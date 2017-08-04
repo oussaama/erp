@@ -30,7 +30,9 @@ appsense_Class_etudiant:
     options:
         expose: true
 
-
+absent_add:
+    path:     /absence/ajout/{classe}
+    defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:addAbsence }
 appsense_student:
     path:     /{id}/affecter/absence
     defaults: { _controller: ERPBundle:Front/Enseignant/Appsense:affecteAbsence }
