@@ -182,12 +182,20 @@
                             <div class="detail-profile float-xs-right">{{ etudiant.nom }} {{ etudiant.prenom }}</div>
                         </div>
                         <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
+                            <div class="left-name-profile float-xs-left">Nom Fille :</div>
+                            <div class="detail-profile float-xs-right">{{ etudiant.fille }}</div>
+                        </div>
+                        <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                             <div class="left-name-profile float-xs-left">Cin :</div>
-                            <div class="detail-profile float-xs-right">{{ etudiant.cin }}</div>
+                            <div class="detail-profile float-xs-right">{{ etudiant.cin }} delivré le {{ etudiant.dateCin|date('Y-m-d') }} à {{ etudiant.lieuxCin }} </div>
                         </div>
                         <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                             <div class="left-name-profile float-xs-left">DateNaissance :</div>
-                            <div class="detail-profile float-xs-right">{{ etudiant.naissance | date('d-M-Y') }}</div>
+                            <div class="detail-profile float-xs-right">{{ etudiant.naissance | date('d-M-Y') }} à {{ etudiant.lieux }}</div>
+                        </div>
+                        <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
+                            <div class="left-name-profile float-xs-left">Nationalite :</div>
+                            <div class="detail-profile float-xs-right">{{ etudiant.nationalite }}</div>
                         </div>
                         <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                             <div class="left-name-profile float-xs-left">Sexe :</div>

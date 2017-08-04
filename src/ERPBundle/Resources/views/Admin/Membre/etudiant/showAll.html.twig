@@ -186,20 +186,24 @@
                                 <div class="detail-profile float-xs-right">{{ etudiant.cie }}</div>
                             </div>
                             <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
-                                <div class="left-name-profile float-xs-left"> Nom & Prenom :</div>
-                                <div class="detail-profile float-xs-right">{{ etudiant.nom }} {{ etudiant.prenom }}</div>
+                                <div class="left-name-profile float-xs-left">Nom Fille :</div>
+                                <div class="detail-profile float-xs-right">{{ etudiant.fille }}</div>
                             </div>
                             <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                                 <div class="left-name-profile float-xs-left">Cin :</div>
-                                <div class="detail-profile float-xs-right">{{ etudiant.cin }}</div>
+                                <div class="detail-profile float-xs-right">{{ etudiant.cin }} delivré le {{ etudiant.dateCin|date('Y-m-d') }} à {{ etudiant.lieuxCin }} </div>
+                            </div>
+                            <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
+                                <div class="left-name-profile float-xs-left">DateNaissance :</div>
+                                <div class="detail-profile float-xs-right">{{ etudiant.naissance | date('d-M-Y') }} à {{ etudiant.lieux }}</div>
+                            </div>
+                            <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
+                                <div class="left-name-profile float-xs-left">Nationalite :</div>
+                                <div class="detail-profile float-xs-right">{{ etudiant.nationalite }}</div>
                             </div>
                             <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                                 <div class="left-name-profile float-xs-left">Classe :</div>
                                 <div class="detail-profile float-xs-right">{{ etudiant.classe.nomClass }}</div>
-                            </div>
-                            <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
-                                <div class="left-name-profile float-xs-left">Date de Naissance :</div>
-                                <div class="detail-profile float-xs-right">{{ etudiant.naissance | date('d-M-Y') }}</div>
                             </div>
                             <div class="user-name-profile col-xl-12 col-md-12 col-xs-12">
                                 <div class="left-name-profile float-xs-left">Sexe :</div>
@@ -301,7 +305,7 @@
                     <div class="lightbox-image gallery-group animationGallery">
                         <div class="search_block">
                             <h4>Justificatif de paiment :</h4>
-                            {% for note in etudiant.document.extrait %}
+                            {% for extrait in etudiant.document.extrait %}
                                 <div class="col-lg-4" id="animation-lightbox-output">
                                     <a data-effect="mfp-zoom-in"
                                        href="{{ asset('uploads/etablissement/'~ "now"|date('Y')~'/etudiant/'~id~'/'~extrait) }}">
