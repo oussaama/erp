@@ -93,15 +93,18 @@
           rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/global/css/components.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/layouts/layout-left-icon-menu/css/layout.min.css') }}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css">
     <style>
         .input-margin {
             margin-bottom: 10px;
         }
-        .datepicker-switch{
+
+        .datepicker-switch {
             color: #087380;
         }
-        .next ,.prev {
+
+        .next, .prev {
             color: #087310;
         }
     </style>
@@ -181,196 +184,230 @@
                                     </div>
                                     <div class="divider15"></div>
                                     <div class="divider15"></div>
-                        <div class="divider15"></div>
-                        {% if etat == 0 %}
-                        {{ form_start(form,{'action': path('etudiant_registration',{'etat':1}),'method':'POST','attr':{'id':'addEtudiant'}}) }}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                    <div class="divider15"></div>
+                                    {% if etat == 0 %}
+                                    {{ form_start(form,{'action': path('etudiant_registration',{'etat':1}),'method':'POST','attr':{'id':'addEtudiant'}}) }}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
                                                         <span class="input-group-addon"><i
                                                                     class="icon icon_profile"></i></span>
-                                    {{ form_row(form.username,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_username"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_profile"></i></span>
-                                    {{ form_row(form.nom,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <!--<span id="etudiant_nom"></span>-->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_profile"></i></span>
-                                    {{ form_row(form.prenom,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_prenom"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_wallet"></i></span>
-                                    {{ form_row(form.cin,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_cin"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                        <span class="input-group-addon"><i
-                                                                    class="icon icon_calendar"></i></span>
-                                    {{ form_row(form.naissance) }}
-                                </div>
-                                <span id="etudiant_fullName"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_wallet"></i></span>
-                                    {{ form_row(form.lieu) }}
-                                </div>
-                                <span id="etudiant_cin"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_profile"></i></span>
-                                    {{ form_row(form.sex) }}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_house"></i></span>
-                                    {{ form_row(form.pays) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                    <span class="input-group-addon"><i class="icon icon_house"></i></span>
-                                    {{ form_row(form.adresse) }}
-                                </div>
-                                <span id="etudiant_cp"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                                {{ form_row(form.username,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_username"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_profile"></i></span>
+                                                {{ form_row(form.fille,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_profile"></i></span>
+                                                {{ form_row(form.nom,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_nom"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_profile"></i></span>
+                                                {{ form_row(form.prenom,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_prenom"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
+                                                <span class="input-group-addon"><i
+                                                            class="icon icon_calendar"></i></span>
+                                                {{ form_row(form.cin) }}
+                                            </div>
+                                            <span id=""></span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_wallet"></i></span>
+                                                {{ form_row(form.lieuxCin) }}
+                                            </div>
+                                            <span id="etudiant_lieu_cin"></span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_wallet"></i></span>
+                                                {{ form_row(form.dateCin) }}
+                                            </div>
+                                            <span id="etudiant_date_cin"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                <span class="input-group-addon"><i
+                                                            class="icon icon_calendar"></i></span>
+                                                {{ form_row(form.naissance) }}
+                                            </div>
+                                            <span id=""></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_wallet"></i></span>
+                                                {{ form_row(form.lieu) }}
+                                            </div>
+                                            <span id="etudiant_cin"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_profile"></i></span>
+                                                {{ form_row(form.sex) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_house"></i></span>
+                                                {{ form_row(form.nationalite) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_house"></i></span>
+                                                {{ form_row(form.pays) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_house"></i></span>
+                                                {{ form_row(form.adresse) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_house"></i></span>
+                                                {{ form_row(form.cp,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_cp"></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group input-left-icon input-margin">
+                                                    <span class="input-group-addon"><i
+                                                                class="icon icon_house"></i></span>
+                                                {{ form_row(form.ville) }}
+                                            </div>
+                                            <span id="etudiant_ville"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
                                                                 <span class="input-group-addon"><i
                                                                             class="icon icon_house"></i></span>
-                                    {{ form_row(form.ville) }}
-                                </div>
-                                <span id="etudiant_ville"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                                <span class="input-group-addon"><i
-                                                                            class="icon icon_house"></i></span>
-                                    {{ form_row(form.cp,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_pays"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                                <span class="input-group-addon"><i
-                                                                            class="icon icon_house"></i></span>
-                                    {{ form_row(form.niveauEtude,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_pays"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                        <span class="input-group-addon"><i
-                                                                    class="icon icon_document"></i></span>
-                                    {{ form_row(form.diplome,{'attr': {'onChange':'Diplome();'}}) }}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                        <span class="input-group-addon"><i
-                                                                    class="icon icon_document"></i></span>
-                                    {{ form_row(form.filiere,{'attr': {'onChange':'Filiere();'}}) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                            <span class="input-group-addon"><i
-                                                                        class="icon icon_target"></i></span>
-                                    {{ form_row(form.specialite,{'attr': {'onChange':'Niveau();','onSelect':'Niveau()'}}) }}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
-                                                            <span class="input-group-addon"><i
-                                                                        class="icon icon_toolbox"></i></span>
-                                    {{ form_row(form.niveau) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                                {{ form_row(form.niveauEtude,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_pays"></span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
                                                             <span class="input-group-addon"><i
                                                                         class="icon icon_phone"></i></span>
-                                    {{ form_row(form.tel,{'attr': {'onFocusOut':'validation();'}}) }}
-                                </div>
-                                <span id="etudiant_tel"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                                {{ form_row(form.tel,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            </div>
+                                            <span id="etudiant_tel"></span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group input-left-icon input-margin">
                                                             <span class="input-group-addon"><i
                                                                         class="icon icon_mail"></i></span>
-                                    {{ form_row(form.email) }}
+                                                {{ form_row(form.email) }}
+                                            </div>
+                                            <span id="etudiant_email"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_document"></i></span>
+                                            {{ form_row(form.diplome,{'attr': {'onChange':'Diplome();'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group input-left-icon input-margin">
+                                                        <span class="input-group-addon"><i
+                                                                    class="icon icon_document"></i></span>
+                                            {{ form_row(form.filiere,{'attr': {'onChange':'Filiere();'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_target"></i></span>
+                                            {{ form_row(form.specialite,{'attr': {'onChange':'Niveau();','onSelect':'Niveau()'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group input-left-icon input-margin">
+                                                            <span class="input-group-addon"><i
+                                                                        class="icon icon_toolbox"></i></span>
+                                            {{ form_row(form.niveau) }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <span id="etudiant_email"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group input-left-icon input-margin">
                                                             <span class="input-group-addon"><i
                                                                         class="icon icon_key"></i></span>
-                                    {{ form_row(form.plainPassword.first) }}
-                                </div>
-                                <span id="etudiant_p1"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group input-left-icon input-margin">
+                                            {{ form_row(form.plainPassword.first) }}
+                                        </div>
+                                        <span id="etudiant_p1"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-left-icon input-margin">
                                                             <span class="input-group-addon"><i
                                                                         class="icon icon_key"></i></span>
-                                    {{ form_row(form.plainPassword.second,{'attr': {'onFocusOut':'validation();'}}) }}
+                                            {{ form_row(form.plainPassword.second,{'attr': {'onFocusOut':'validation();'}}) }}
+                                        </div>
+                                        <span id="etudiant_p2"></span>
+                                    </div>
                                 </div>
-                                <span id="etudiant_p2"></span>
+                                    <div class="divider15"></div>
+                                <div>
+                                    <input type="submit" value="ajouter"
+                                           class="btn btn-primary site-btn pull-right" id="addEtudiantButton">
+                                </div>
+                                <input type="hidden" value="pre-inscrit" name="test"/>
+                                {{ form_end(form) }}
+                                {% else %}
+                                    <div class="col-md-12 row">
+                                        <div class="alert alert-success" role="alert">
+                                            <center>
+                                                <h4 class="alert-heading">ajout d'information avec
+                                                    succés</h4>
+                                                <p>les informations en cours de traitement</p>
+                                            </center>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="divider15"></div>
-                        <div>
-                            <input type="submit" value="ajouter"
-                                   class="btn btn-primary site-btn pull-right" id="addEtudiantButton">
-                        </div>
-                        <input type="hidden" value="pre-inscrit" name="test"/>
-                        {{ form_end(form) }}
-                        {% else %}
-                            <div class="col-md-12 row">
-                                <div class="alert alert-success" role="alert">
-                                    <center>
-                                        <h4 class="alert-heading">ajout d'information avec
-                                            succés</h4>
-                                        <p>les informations en cours de traitement</p>
-                                    </center>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
             </section>
         </div>
     </section>
@@ -398,7 +435,7 @@
 <script type="text/javascript" src="{{ asset('assets/global/js/global/wizard.min.js') }}"></script>
 <script type="text/javascript"
         src="{{ asset('assets/layouts/layout-left-icon-menu/js/layout.min.js') }}"></script>
- <script>
+<script>
     $('#erp_etudiant_pre_inscription_sex').prepend('<option value="" selected="selected">Selectionner votre sexe</option>');
     $('#erp_etudiant_pre_inscription_niveauEtude').prepend('<option value="" selected="selected">Selectionner votre Niveau d\'etudes</option>');
     $('#erp_etudiant_pre_inscription_diplome').prepend('<option value="" selected="selected">Selectionner votre Diplome Souhaiter</option>');
@@ -458,7 +495,7 @@
         console.log($("#erp_etudiant_pre_inscription_specialite option:selected"));
     }
     function validation() {
-        if (valide1 == true && valide3 == true && valide4 == true && valide5 == true && valide6 == true && valide7 == true ) {
+        if (valide1 == true && valide3 == true && valide4 == true && valide5 == true && valide6 == true && valide7 == true) {
             $('#addEtudiantButton').prop('disabled', false);
         } else {
             $('#addEtudiantButton').prop('disabled', true);
@@ -473,7 +510,8 @@
 </body>
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 <script>
     $(document).ready(function () {
         // configure the bootstrap datepicker

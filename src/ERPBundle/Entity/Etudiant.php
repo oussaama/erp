@@ -81,6 +81,33 @@ class Etudiant extends User
      */
     private $sex;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieuxCin", type="string", length=255)
+     */
+    private $lieuxCin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationalite", type="string", length=255)
+     */
+    private $nationalite;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="lieuCin", type="date")
+     */
+    private $dateCin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fille", type="string", length=255)
+     */
+    private $fille;
 
     /**
      * @var string
@@ -1080,5 +1107,101 @@ class Etudiant extends User
     public function getTranche()
     {
         return $this->tranche;
+    }
+
+    /**
+     * Set lieuxCin
+     *
+     * @param string $lieuxCin
+     *
+     * @return Etudiant
+     */
+    public function setLieuxCin($lieuxCin)
+    {
+        $this->lieuxCin = $lieuxCin;
+    
+        return $this;
+    }
+
+    /**
+     * Get lieuxCin
+     *
+     * @return string
+     */
+    public function getLieuxCin()
+    {
+        return $this->lieuxCin;
+    }
+
+    /**
+     * Set nationalite
+     *
+     * @param string $nationalite
+     *
+     * @return Etudiant
+     */
+    public function setNationalite($nationalite)
+    {
+        $this->nationalite = $nationalite;
+    
+        return $this;
+    }
+
+    /**
+     * Get nationalite
+     *
+     * @return string
+     */
+    public function getNationalite()
+    {
+        return $this->nationalite;
+    }
+
+    /**
+     * Set dateCin
+     *
+     * @param \DateTime $dateCin
+     *
+     * @return Etudiant
+     */
+    public function setDateCin($dateCin)
+    {
+        $this->dateCin = $dateCin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateCin
+     *
+     * @return \DateTime
+     */
+    public function getDateCin()
+    {
+        return $this->dateCin;
+    }
+
+    /**
+     * Set fille
+     *
+     * @param string $fille
+     *
+     * @return Etudiant
+     */
+    public function setFille($fille)
+    {
+        $this->fille = $fille;
+    
+        return $this;
+    }
+
+    /**
+     * Get fille
+     *
+     * @return string
+     */
+    public function getFille()
+    {
+        return $this->fille;
     }
 }
