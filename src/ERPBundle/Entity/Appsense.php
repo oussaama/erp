@@ -22,6 +22,47 @@ class Appsense
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tp", type="boolean")
+     */
+    private $tp;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="td", type="boolean")
+     */
+    private $td;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="cour", type="boolean")
+     */
+    private $cour;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="retard", type="boolean")
+     */
+    private $retard;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="present", type="boolean")
+     */
+    private $present;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="absent", type="boolean")
+     */
+    private $absent;
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateAppsense", type="datetime")
@@ -184,4 +225,101 @@ class Appsense
     {
         return $this->matiere;
     }
+
+    /**
+     * @return bool
+     */
+    public function isTp()
+    {
+        return $this->tp;
+    }
+
+    /**
+     * @param bool $tp
+     */
+    public function setTp($tp)
+    {
+        $this->tp = $tp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTd()
+    {
+        return $this->td;
+    }
+
+    /**
+     * @param bool $td
+     */
+    public function setTd($td)
+    {
+        $this->td = $td;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCour()
+    {
+        return $this->cour;
+    }
+
+    /**
+     * @param bool $cour
+     */
+    public function setCour($cour)
+    {
+        $this->cour = $cour;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRetard()
+    {
+        return $this->retard;
+    }
+
+    /**
+     * @param mixed $retard
+     */
+    public function setRetard($retard)
+    {
+        $this->retard = $retard;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPresent()
+    {
+        return $this->present;
+    }
+
+    /**
+     * @param mixed $present
+     */
+    public function setPresent($present)
+    {
+        $this->present = $present;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAbsent()
+    {
+        return $this->absent;
+    }
+
+    /**
+     * @param mixed $absent
+     */
+    public function setAbsent($absent)
+    {
+        $this->absent = $absent;
+    }
+
 }
